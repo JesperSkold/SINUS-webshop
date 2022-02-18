@@ -34,7 +34,6 @@ export default {
   align-items: center;
   padding: 1rem;
   border: 1px solid black;
-  width: 100vw;
   height: 8rem;
 }
 

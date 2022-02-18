@@ -45,11 +45,7 @@ export default {
   position: relative;
   justify-content: center;
   width: 19rem;
-  margin: 1rem;
   padding: 1rem;
-  /* Border is just for reference, remove later! */
-  border: 1px solid black;
-  /* Border is just for reference, remove later! */
 }
 
 .product-image {

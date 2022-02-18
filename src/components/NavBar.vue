@@ -7,9 +7,9 @@
     <router-link to="/">Apparel</router-link>
     <router-link to="/">Bags</router-link>
     <div class="cartlogin">
-      <router-link to="/checkout"
-        ><img :src="shoppingCart" class="shopping-cart"
-      /></router-link>
+      <!-- <router-link to="/checkout"> -->
+      <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
+      <!-- </router-link> -->
       <img :src="userLogin" class="user-login" />
     </div>
   </div>
@@ -24,6 +24,11 @@ export default {
       sinusLogo: require("@/assets/sinus-logo.svg"),
     };
   },
+ methods:{
+   showCart(){
+     this.$store.dispatch('showCartModal')
+   }
+  }
 };
 </script>
 
@@ -35,6 +40,14 @@ export default {
   padding: 1rem;
   border: 1px solid black;
   height: 8rem;
+}
+
+.shopping-cart{
+  cursor: pointer;
+}
+
+.user-login{
+  cursor: pointer;
 }
 
 a {

@@ -1,16 +1,15 @@
 <template>
   <div>
     <NavBar />
-    <Product />
     <router-view />
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import Product from "@/components/Product.vue";
+
 export default {
-  components: { NavBar, Product },
+  components: { NavBar },
 };
 </script>
 

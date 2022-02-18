@@ -14,7 +14,7 @@
         <input type="text" placeholder="Mobile No." />
       </div>
       <div class="city-zip">
-        <input type="text" placeholder="Adress" />
+        <input type="text" placeholder="City" />
         <input type="text" placeholder="Zip code" />
       </div>
     </div>
@@ -50,11 +50,16 @@ form {
 input {
   padding: 2rem;
   font-size: 2rem;
+  background: rgb(250, 250, 250);
 }
 
 button {
   width: 15rem;
   height: 5rem;
+  margin: auto;
+}
+
+.checkout-form {
   margin: auto;
 }
 

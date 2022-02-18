@@ -33,6 +33,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/_global-colors.scss';
 footer {
 	height: 35vh;
 	background-size: cover;
@@ -71,7 +72,7 @@ section:nth-child(3) > img {
 	}
 	h2 {
 		font-size: 1.7rem;
-		color: rgba(0, 0, 0, 0.548);
+		color: $primary-greyed-out;
 	}
 }
 </style>

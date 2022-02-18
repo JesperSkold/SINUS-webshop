@@ -7,7 +7,9 @@
     <router-link to="/">Apparel</router-link>
     <router-link to="/">Bags</router-link>
     <div class="cartlogin">
-      <img :src="shoppingCart" class="shopping-cart" />
+      <router-link to="/checkout"
+        ><img :src="shoppingCart" class="shopping-cart"
+      /></router-link>
       <img :src="userLogin" class="user-login" />
     </div>
   </div>
@@ -32,7 +34,6 @@ export default {
   align-items: center;
   padding: 1rem;
   border: 1px solid black;
-  width: 100vw;
   height: 8rem;
 }
 

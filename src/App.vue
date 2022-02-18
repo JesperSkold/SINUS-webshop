@@ -1,7 +1,6 @@
 <template>
   <div>
     <NavBar />
-    <Categories/>
     <router-view />
     <Footer />
   </div>
@@ -10,7 +9,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
-import Categories from "@/components/Categories.vue";
+
 export default {
   components:{
      NavBar,
@@ -21,13 +20,17 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Mukta+Malar:wght@400;700&display=swap');
-body{
-  margin: 0;
-  padding: 0;
-}
-h1, h2, h3, h4, h5, a {
-  font-family: 'Montserrat', sans-serif;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Mukta+Malar:wght@400;700&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+a {
+  font-family: "Montserrat", sans-serif;
+
 }
 
 a {
@@ -44,30 +47,32 @@ a.active {
 }
 
 h1 {
-  font-size: 6rem
+  font-size: 6rem;
 }
 h2 {
-  font-size: 4rem
+  font-size: 4rem;
 }
 
 h3 {
-  font-size: 3rem
+  font-size: 3rem;
 }
 
 h4 {
-  font-size: 2rem
+  font-size: 2rem;
 }
 
+p,
+button {
+  font-family: "Mukta Malar", sans-serif;
 h5 {
   font-size: 1.5rem
 }
 
-p, button {
-  font-family: 'Mukta Malar', sans-serif;
 }
 button {
-  font-size: .875rem
+  font-size: 0.875rem;
 }
+
 .sinus-button{
   background: #003827;
   color: White;

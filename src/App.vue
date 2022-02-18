@@ -23,6 +23,11 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Mukta+Malar:wght@400;700&display=swap");
 
+body, html{
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2,
 h3,

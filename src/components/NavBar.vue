@@ -7,7 +7,9 @@
     <router-link to="/">Apparel</router-link>
     <router-link to="/">Bags</router-link>
     <div class="cartlogin">
-      <img :src="shoppingCart" class="shopping-cart" />
+      <router-link to="/checkout"
+        ><img :src="shoppingCart" class="shopping-cart"
+      /></router-link>
       <img :src="userLogin" class="user-login" />
     </div>
   </div>

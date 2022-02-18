@@ -34,13 +34,18 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border: 1px solid black;
   height: 8rem;
 }
 
 a {
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+img{
+  margin: 0 1rem
 }
 </style>

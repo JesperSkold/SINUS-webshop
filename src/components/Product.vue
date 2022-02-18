@@ -1,3 +1,4 @@
+<!--
 <template>
   <article class="product">
     <div class="product-image-container">
@@ -10,19 +11,17 @@
     <p class="product-price">$ 1337</p>
   </article>
 </template>
-
-<!--
-Should work with API
+-->
 
 <template>
   <article class="product">
   
     <div class="product-image-container">
       <router-link to="/cart">
-        <img class="shopping-cart" :src="../assets/shopping-cart.svg" alt="Shopping cart">
+        <img class="shopping-cart" src="../assets/shopping-cart.svg" alt="Shopping cart">
       </router-link>
       <router-link to="/product/:category/:id">
-        <img class="product-image" :src:"product.imgSrc" :alt="product.title">
+        <img class="product-image" src="../assets/product-template.png" :alt="product.title">
       </router-link>
     </div>
     <router-link to="/product/:category/:id">
@@ -32,11 +31,10 @@ Should work with API
   </article>
 </template>
 
--->
-
 
 <script>
 export default {
+  props: {product: Object}
 
 }
 </script>
@@ -49,7 +47,9 @@ export default {
   width: 19rem;
   margin: 1rem;
   padding: 1rem;
+  /* Border is just for reference, remove later! */
   border: 1px solid black;
+  /* Border is just for reference, remove later! */
 }
 
 .product-image {

@@ -78,21 +78,4 @@ button {
   font-size: 0.875rem;
 }
 
-.sinus-button {
-  background: #003827;
-  color: White;
-  border-radius: 4px;
-  padding: 1rem 2.5rem;
-  border: none;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.sinus-button:active {
-  background: #015239;
-}
-
-.sinus-button:hover {
-  box-shadow: -1px 3px 6px 0px rgba(0, 0, 0, 0.4);
-}
 </style>

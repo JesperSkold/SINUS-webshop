@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as API from '@/api/mock.js'
+import * as API from '@/api/index.js'
 
 Vue.use(Vuex)
 
@@ -20,7 +20,12 @@ export default new Vuex.Store({
   actions: {
     async fetchAllProducts(context){
       const response = await API.fetchAllProducts()
-      context.commit('fetchAllProducts', response)
+        if (response.status === 200){
+          context.commit('fetchAllProducts', response.data.products)
+        }else{
+          console.log(response)
+        }
+      console.log(response)
     },
     showCartModal(context){
       context.commit('showCartModal')

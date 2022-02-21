@@ -21,7 +21,7 @@
         <img class="shopping-cart" src="../assets/shopping-cart.svg" alt="Shopping cart">
       </router-link>
       <router-link to="/product/:category/:id">
-        <img class="product-image" src="../assets/product-template.png" :alt="product.title">
+      <img :src="'http://localhost:5000' + '/images/'+ product.imgFile" height="292" />
       </router-link>
     </div>
     <router-link to="/product/:category/:id">
@@ -34,7 +34,12 @@
 
 <script>
 export default {
-  props: {product: Object}
+  props: {product: Object},
+  computed: {
+    image(){
+      return 'http://localhost:5000/images/' + this.product.imgFile
+    }
+  }
 
 }
 </script>

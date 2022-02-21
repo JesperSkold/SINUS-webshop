@@ -2,7 +2,8 @@
   <div class="products-view">
     <div class="products-view-top">
       <div class="path"><p>Products / Hoodies</p></div>
-      <div class="filter">
+        <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/>
+      <div class="filter" @click="filterDisplay = true">
         <img class="filter-icon" src="../assets/filter.svg" alt="">
         <p>Filters</p>
       </div>
@@ -20,9 +21,13 @@
 <script>
 import Product from '@/components/Product.vue'
 import Categories from '@/components/Categories.vue'
+import Filters from '@/components/Filters.vue'
 
 export default {
-  components: { Product, Categories },
+  components: { Product, Categories, Filters },
+  data(){return{
+    filterDisplay: false,
+    }},
   methods: {
     fetchAllProducts(){
       this.$store.dispatch('fetchAllProducts')
@@ -76,6 +81,10 @@ p {
   grid-row: 1/2;
   grid-column: 3/4;
   justify-self: right;
+}
+
+.filter:hover {
+  cursor: pointer;
 }
 
 .line {

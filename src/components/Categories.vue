@@ -47,6 +47,8 @@ export default {
 img{
   margin-left: 2rem;
   cursor: pointer;
+  transform: rotate(180deg);
+  transition: transform .6s ease-in-out;
 }
 
 h5{
@@ -71,7 +73,8 @@ h4{
 }
 
 .flipped {
-  transform: rotate(180deg);
+  transform: rotate(360deg);
+  transition: transform .6s ease-in-out;
 }
 
 .dropdown-items{

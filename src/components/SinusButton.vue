@@ -1,20 +1,12 @@
 <template>
-  <button>{{buttonText}}</button>
+  <button>
+    <slot/>
+  </button>
 </template>
 
 <script>
 export default {
-  props: ['buttonText'],
 
-  computed: {
-    text(){
-      return this.buttonText
-    }
-  },
-
-  data(){return{
-    // buttonText: ""
-  }}
   }
 
 </script>
@@ -27,6 +19,9 @@ export default {
     padding: 1rem 2.5rem;
     border: none;
     font-weight: bold;
+    /* font-size: 0.875rem; */
+    font-size: 1rem;
+    text-transform: uppercase;
   }
 
   button:active{

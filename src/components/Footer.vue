@@ -21,9 +21,9 @@
 					<h2>SKATEBOARDS</h2>
 				</div>
 			</div>
-			<img src="../assets/twitter.svg" alt="" />
-			<img src="../assets/instagram-logo.svg" alt="" />
-			<img src="../assets/facebook-logo.svg" alt="" />
+			<img src="../assets/twitter.svg" alt="Twitter" />
+			<img src="../assets/instagram-logo.svg" alt="Instagram" />
+			<img src="../assets/facebook-logo.svg" alt="Facebook" />
 		</section>
 	</footer>
 </template>
@@ -35,9 +35,11 @@ export default {};
 <style lang="scss" scoped>
 @import '@/assets/styles/_global-colors.scss';
 footer {
-	height: 35vh;
+	height: 25rem;
 	background-size: cover;
 	background-position: center;
+	background-size: 70%;
+	background-color: #f4f4f4;
 	background-repeat: no-repeat;
 	background-image: url("../assets/skater.jpg");
 	display: flex;

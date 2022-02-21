@@ -6,7 +6,9 @@
       <input type="text" />
       <label for="">Password</label>
       <input type="password" />
-      <button class="sinus-button">Login</button>
+      <div class="button">
+        <SinusButton>Login</SinusButton>
+      </div>
     </div>
     <div class="sign-up">
       <h2>Sign up</h2>
@@ -16,13 +18,18 @@
       <input type="password" />
       <label for="">Repeat password</label>
       <input type="password" />
-      <button class="sinus-button">Sign up</button>
+      <div class="button">
+        <SinusButton>Signup</SinusButton>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import SinusButton from "@/components/SinusButton.vue"
+export default {
+  components: {SinusButton}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -47,9 +54,5 @@ input {
   border-radius: 10px;
 }
 
-button {
-  width: 15rem;
-  height: 5rem;
-  margin: auto;
-}
+
 </style>

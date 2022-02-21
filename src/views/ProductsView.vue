@@ -1,8 +1,8 @@
 <template>
   <div class="products-view">
-    <Filters v-if="filterDisplay" @close="filterDisplay = false"/>
     <div class="products-view-top">
       <div class="path"><p>Products / Hoodies</p></div>
+        <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/>
       <div class="filter" @click="filterDisplay = true">
         <img class="filter-icon" src="../assets/filter.svg" alt="">
         <p>Filters</p>
@@ -81,6 +81,10 @@ p {
   grid-row: 1/2;
   grid-column: 3/4;
   justify-self: right;
+}
+
+.filter:hover {
+  cursor: pointer;
 }
 
 .line {

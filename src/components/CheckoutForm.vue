@@ -44,13 +44,20 @@ form {
   align-content: flex-end;
 }
 input {
+
   padding: 1rem;
   font-size: 1rem;
+  background: rgb(250, 250, 250);
+
 }
 
 button {
   width: 10rem;
   height: 3rem;
+  margin: auto;
+}
+
+.checkout-form {
   margin: auto;
 }
 

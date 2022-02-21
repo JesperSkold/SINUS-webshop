@@ -1,19 +1,33 @@
 <template>
   <div>
+    <Cart />
     <NavBar />
     <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
+import Cart from "@/components/Cart";
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
+
 export default {
-  components: { NavBar },
+  components:{
+     NavBar,
+     Footer,
+     Cart 
+     },
 };
 </script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Mukta+Malar:wght@400;700&display=swap");
+
+body, html{
+  margin: 0;
+  padding: 0;
+}
 
 h1,
 h2,
@@ -24,10 +38,22 @@ a {
   font-family: "Montserrat", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-shadow: rgba(0, 0, 0, 0.25);
+}
+
+a.active {
+  text-decoration-line: underline;
+}
+
 h1 {
   font-size: 6rem;
 }
-
 h2 {
   font-size: 4rem;
 }
@@ -41,11 +67,15 @@ h4 {
 }
 
 p,
-button {
+button,
+label {
   font-family: "Mukta Malar", sans-serif;
+  h5 {
+    font-size: 1.5rem;
+  }
 }
-
 button {
   font-size: 0.875rem;
 }
+
 </style>

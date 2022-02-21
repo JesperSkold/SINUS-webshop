@@ -28,7 +28,7 @@ export default {
 .login-form {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  padding: 5rem;
 }
 
 .login,
@@ -47,8 +47,9 @@ export default {
 }
 
 input {
-  padding: 2rem;
-  font-size: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 20rem;
   background: rgb(250, 250, 250);
   margin-bottom: 1rem;
   border-radius: 10px;

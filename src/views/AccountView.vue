@@ -14,8 +14,8 @@ export default {
   components: { LoginForm, MyAccount, CreateAccount },
   data() {
     return {
-      loggedIn: true,
-      signUp: true,
+      loggedIn: false,
+      signUp: false,
     };
   },
 };

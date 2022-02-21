@@ -10,7 +10,9 @@
       <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
       <!-- </router-link> -->
-      <img :src="userLogin" class="user-login" />
+      <router-link to="/account">
+        <img :src="userLogin" class="user-login" />
+        </router-link>
     </div>
   </div>
 </template>

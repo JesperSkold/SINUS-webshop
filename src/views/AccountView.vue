@@ -12,7 +12,7 @@ export default {
   components: { LoginForm, MyAccount },
   data() {
     return {
-      loggedIn: false,
+      loggedIn: true,
     };
   },
 };

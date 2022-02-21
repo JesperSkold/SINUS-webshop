@@ -1,8 +1,9 @@
 <template>
   <div class="products-view">
+    <Filters v-if="filterDisplay" @close="filterDisplay = false"/>
     <div class="products-view-top">
       <div class="path"><p>Products / Hoodies</p></div>
-      <div class="filter">
+      <div class="filter" @click="filterDisplay = true">
         <img class="filter-icon" src="../assets/filter.svg" alt="">
         <p>Filters</p>
       </div>
@@ -20,9 +21,13 @@
 <script>
 import Product from '@/components/Product.vue'
 import Categories from '@/components/Categories.vue'
+import Filters from '@/components/Filters.vue'
 
 export default {
-  components: { Product, Categories },
+  components: { Product, Categories, Filters },
+  data(){return{
+    filterDisplay: false,
+    }},
   methods: {
     fetchAllProducts(){
       this.$store.dispatch('fetchAllProducts')

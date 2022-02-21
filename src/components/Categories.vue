@@ -1,19 +1,15 @@
 <template>
   <aside>
-      <router-link to="/">
         <h4>Categories</h4>
-      </router-link>
-      <router-link to="/">
+      <router-link to="/products">
         <h5>Boards</h5>
       </router-link>
       <router-link to="/">
         <h5>Wheels</h5>
       </router-link>
-      <div class="flex">
-        <router-link to="/">
+      <div class="flex" @click="toggle">
           <h5 >Apparel</h5>
-        </router-link>
-        <img src="@/assets/arrow-up.svg" alt="" height="30px" width="30px" @click="toggle" :class="{flipped: active}">
+        <img src="@/assets/arrow-up.svg" alt="" height="30px" width="30px" :class="{flipped: active}">
       </div>
         <transition name="slide">
           <div v-if="active" class="dropdown-items">
@@ -51,10 +47,13 @@ export default {
 img{
   margin-left: 2rem;
   cursor: pointer;
+  transform: rotate(180deg);
+  transition: transform .6s ease-in-out;
 }
 
 h5{
     margin: 1rem;
+    cursor: pointer
 }
 
 h4{
@@ -74,7 +73,8 @@ h4{
 }
 
 .flipped {
-  transform: rotate(180deg);
+  transform: rotate(360deg);
+  transition: transform .6s ease-in-out;
 }
 
 .dropdown-items{
@@ -90,7 +90,6 @@ p{
 .slide-enter, .slide-leave-to{
   transform: scaleY(0);
 }
-
 
 
 

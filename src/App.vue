@@ -41,10 +41,14 @@ a {
 a {
   text-decoration: none;
   color: black;
+
+  &.router-link-exact-active {
+    text-decoration: underline;
+  }
 }
 
 a:hover {
-  text-shadow: rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 a.active {
@@ -64,6 +68,10 @@ h3 {
 
 h4 {
   font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.5rem
 }
 
 p,

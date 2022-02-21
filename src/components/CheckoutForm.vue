@@ -1,6 +1,8 @@
 <template>
   <form action="" class="checkout-form">
+
     <CreateAccount />
+
     <div class="payment-container">
       <div class="payment-info">
         <div class="card-number">
@@ -41,10 +43,12 @@ input {
 .checkout-form {
   margin: auto;
 }
+
 .name-input input,
 .city-zip input {
   width: 13.9rem;
 }
+
 .adress-email {
   display: flex;
   flex-direction: column;
@@ -62,7 +66,7 @@ input {
 }
 .card-number input {
   width: 20.1rem;
-}
+
 .month-cvc input {
   width: 8.9rem;
 }

@@ -2,7 +2,7 @@
   <div class="nav">
     <img :src="sinusLogo" class="sinus-logo" />
     <router-link to="/">Home</router-link>
-    <router-link to="/">Boards</router-link>
+    <router-link to="/products">Boards</router-link>
     <router-link to="/">Wheels</router-link>
     <router-link to="/">Apparel</router-link>
     <router-link to="/">Bags</router-link>
@@ -10,7 +10,9 @@
       <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
       <!-- </router-link> -->
-      <img :src="userLogin" class="user-login" />
+      <router-link to="/account">
+        <img :src="userLogin" class="user-login" />
+      </router-link>
     </div>
   </div>
 </template>
@@ -54,6 +56,8 @@ a {
   text-decoration: none;
   font-size: 2.5rem;
   font-weight: bold;
+
+  
 }
 
 img{

@@ -15,11 +15,7 @@
 		</section>
 		<section>
 			<div class="sinus-container">
-				<img src="../assets/logo.svg" alt="" />
-				<div class="logo-text">
-					<h1>SINUS</h1>
-					<h2>SKATEBOARDS</h2>
-				</div>
+				<img src="../assets/sinus-logo.svg" alt="Sinus Logo"/>
 			</div>
 			<img src="../assets/twitter.svg" alt="Twitter" />
 			<img src="../assets/instagram-logo.svg" alt="Instagram" />

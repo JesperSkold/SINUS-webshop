@@ -1,24 +1,6 @@
 <template>
   <form action="" class="checkout-form">
     <CreateAccount />
-    <!-- <div class="personal-info">
-      <div class="country-email">
-        <input type="text" placeholder="Country" />
-        <input type="text" placeholder="E-mail" />
-      </div>
-      <div class="name-input">
-        <input type="text" placeholder="First name" />
-        <input type="text" placeholder="Last name" />
-      </div>
-      <div class="adress-mobile">
-        <input type="text" placeholder="Adress" />
-        <input type="text" placeholder="Mobile No." />
-      </div>
-      <div class="city-zip">
-        <input type="text" placeholder="City" />
-        <input type="text" placeholder="Zip code" />
-      </div>
-    </div> -->
     <div class="payment-container">
       <div class="payment-info">
         <div class="card-number">
@@ -29,15 +11,16 @@
           <input type="text" placeholder="CVC" />
         </div>
       </div>
-      <button class="sinus-button">PLACE ORDER</button>
+      <SinusButton>ORDER</SinusButton>
     </div>
   </form>
 </template>
 
 <script>
 import CreateAccount from "@/components/CreateAccount";
+import SinusButton from "@/components/SinusButton";
 export default {
-  components: { CreateAccount },
+  components: { CreateAccount, SinusButton },
   data() {
     return {};
   },
@@ -51,53 +34,38 @@ form {
   align-content: flex-end;
 }
 input {
-  padding: 2rem;
-  font-size: 2rem;
-  background: rgb(250, 250, 250);
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: rgb(232, 231, 231);
 }
-
-button {
-  width: 15rem;
-  height: 5rem;
-  margin: auto;
-}
-
 .checkout-form {
   margin: auto;
 }
-
 .name-input input,
-.adress-mobile input,
 .city-zip input {
-  width: 34rem;
+  width: 13.9rem;
 }
-
-.country-email {
+.adress-email {
   display: flex;
   flex-direction: column;
 }
-
 .personal-info,
 .payment-info {
   border: 5px solid black;
   border-radius: 10px;
 }
-
 .payment-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 5rem;
 }
-
 .card-number input {
-  width: 39.8rem;
+  width: 20.1rem;
 }
-
 .month-cvc input {
-  width: 17.8rem;
+  width: 8.9rem;
 }
-
 .month-cvc {
   display: flex;
   flex-direction: row;

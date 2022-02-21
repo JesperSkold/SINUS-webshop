@@ -6,29 +6,21 @@
       <input type="text" />
       <label for="">Password</label>
       <input type="password" />
+      <p class="sign-up">Sign up</p>
       <div class="button">
         <SinusButton>Login</SinusButton>
-      </div>
-    </div>
-    <div class="sign-up">
-      <h2>Sign up</h2>
-      <label for="">Email</label>
-      <input type="text" />
-      <label for="">Password</label>
-      <input type="password" />
-      <label for="">Repeat password</label>
-      <input type="password" />
-      <div class="button">
-        <SinusButton>Signup</SinusButton>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SinusButton from "@/components/SinusButton.vue"
+import SinusButton from "@/components/SinusButton.vue";
 export default {
-  components: {SinusButton}
+  components: { SinusButton },
+  data() {
+    return {};
+  },
 };
 </script>
 
@@ -46,6 +38,14 @@ export default {
   margin: 2rem;
 }
 
+.sign-up {
+  padding: 0;
+  margin: auto 5px auto auto;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 input {
   padding: 2rem;
   font-size: 2rem;
@@ -53,6 +53,4 @@ input {
   margin-bottom: 1rem;
   border-radius: 10px;
 }
-
-
 </style>

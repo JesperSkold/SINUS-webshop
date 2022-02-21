@@ -61,7 +61,7 @@ export default {
 	right: 0;
 	position: absolute;
 	width: 30rem;
-	height: 100vh;
+	height: 85vh;
 	position: fixed;
 	right: 0;
 	overflow-y: auto;

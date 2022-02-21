@@ -19,7 +19,6 @@ export default {
     padding: 1rem 2.5rem;
     border: none;
     font-weight: bold;
-    /* font-size: 0.875rem; */
     font-size: 1rem;
     text-transform: uppercase;
   }

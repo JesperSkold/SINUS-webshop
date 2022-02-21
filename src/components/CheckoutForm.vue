@@ -1,17 +1,13 @@
 <template>
   <form action="" class="checkout-form">
     <div class="personal-info">
-      <div class="country-email">
-        <input type="text" placeholder="Country" />
+      <div class="adress-email">
         <input type="text" placeholder="E-mail" />
+        <input type="text" placeholder="Adress" />
       </div>
       <div class="name-input">
         <input type="text" placeholder="First name" />
         <input type="text" placeholder="Last name" />
-      </div>
-      <div class="adress-mobile">
-        <input type="text" placeholder="Adress" />
-        <input type="text" placeholder="Mobile No." />
       </div>
       <div class="city-zip">
         <input type="text" placeholder="City" />
@@ -48,14 +44,16 @@ form {
   align-content: flex-end;
 }
 input {
-  padding: 2rem;
-  font-size: 2rem;
+
+  padding: 1rem;
+  font-size: 1rem;
   background: rgb(250, 250, 250);
+
 }
 
 button {
-  width: 15rem;
-  height: 5rem;
+  width: 10rem;
+  height: 3rem;
   margin: auto;
 }
 
@@ -63,22 +61,12 @@ button {
   margin: auto;
 }
 
-.checkout-form > label {
-  position: absolute;
-  top: 50px;
-  left: 20px;
-  padding: 5px 10px;
-  border-radius: 15px;
-  background: #fff;
-}
-
 .name-input input,
-.adress-mobile input,
 .city-zip input {
-  width: 34rem;
+  width: 13.9rem;
 }
 
-.country-email {
+.adress-email {
   display: flex;
   flex-direction: column;
 }
@@ -97,11 +85,11 @@ button {
 }
 
 .card-number input {
-  width: 39.8rem;
+  width: 20rem;
 }
 
 .month-cvc input {
-  width: 17.8rem;
+  width: 8.9rem;
 }
 
 .month-cvc {

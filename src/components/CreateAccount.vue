@@ -37,8 +37,6 @@ input {
   font-size: 1rem;
   background-color: rgb(232, 231, 231);
 }
-.personal-info {
-}
 .sinus-button {
   margin: 1rem auto auto 11.5rem;
 }

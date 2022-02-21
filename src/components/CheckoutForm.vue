@@ -1,6 +1,7 @@
 <template>
   <form action="" class="checkout-form">
-    <div class="personal-info">
+    <CreateAccount />
+    <!-- <div class="personal-info">
       <div class="country-email">
         <input type="text" placeholder="Country" />
         <input type="text" placeholder="E-mail" />
@@ -17,7 +18,7 @@
         <input type="text" placeholder="City" />
         <input type="text" placeholder="Zip code" />
       </div>
-    </div>
+    </div> -->
     <div class="payment-container">
       <div class="payment-info">
         <div class="card-number">
@@ -34,7 +35,9 @@
 </template>
 
 <script>
+import CreateAccount from "@/components/CreateAccount";
 export default {
+  components: { CreateAccount },
   data() {
     return {};
   },
@@ -61,15 +64,6 @@ button {
 
 .checkout-form {
   margin: auto;
-}
-
-.checkout-form > label {
-  position: absolute;
-  top: 50px;
-  left: 20px;
-  padding: 5px 10px;
-  border-radius: 15px;
-  background: #fff;
 }
 
 .name-input input,

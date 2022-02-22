@@ -56,7 +56,7 @@ export default {
       else if(routeFixed == 'socks'){
         return 'socks'
       }
-      return routeFixed
+      return routeFixed + 's'
     }
   },
 

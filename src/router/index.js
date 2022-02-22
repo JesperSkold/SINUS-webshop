@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/HomeView.vue'
-import Products from '../views/ProductsView.vue'
+import ProductsView from '../views/ProductsView.vue'
 import ApparelView from '../views/ApparelView.vue'
 import SingleProduct from '../views/SingleProductView.vue'
 import Account from '../views/AccountView.vue'
@@ -16,9 +16,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/products',
+    path: '/products/:category',
     name: 'Products',
-    component: Products
+    component: ProductsView
   },
   {
     path: '/apparel',

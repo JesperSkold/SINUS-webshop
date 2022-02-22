@@ -12,7 +12,7 @@
     </div>
     <div class="boards">
       <h3>Boards</h3>
-      <router-link to="/boards">
+      <router-link to="/products/skateboard" @click.native="fetchAllProducts">
         <SinusButton>view more</SinusButton>
       </router-link>
     </div>
@@ -24,14 +24,14 @@
     </div>
     <div class="wheels">
       <h3>Wheels</h3>
-      <router-link to="/wheels">
+      <router-link to="/products/wheel" @click.native="fetchAllProducts">
         <SinusButton>view more</SinusButton>
       </router-link>
     </div>
     <div class="bags">
       <div class="bags-flex">
         <h3>Bags</h3>
-        <router-link to="/bags">
+        <router-link to="/products/totebag" @click.native="fetchAllProducts">
           <SinusButton>view more</SinusButton>
         </router-link>
       </div>
@@ -44,7 +44,13 @@
 import SinusButton from '../components/SinusButton.vue'
 
 export default {
-  components: {SinusButton}
+  components: {SinusButton},
+  methods: {
+    fetchAllProducts(){
+    const route = this.$route.path.substring(1).split('/')[1]
+    this.$store.dispatch('fetchAllProducts', route)
+    }
+  }
 }
 </script>
 
@@ -133,6 +139,10 @@ export default {
 
     img{
       margin-right: 1rem;
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      z-index: -1;
     }
   }
 
@@ -141,6 +151,11 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
+
+    button{
+      z-index:1
+    }
   }
 
 </style>

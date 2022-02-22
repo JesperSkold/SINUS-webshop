@@ -3,10 +3,10 @@
     <router-link to="/">
       <img :src="sinusLogo" class="sinus-logo" />
     </router-link>
-    <router-link class="nav-links" to="/products">Boards</router-link>
-    <router-link class="nav-links" to="/wheels">Wheels</router-link>
+    <router-link class="nav-links" to="/products/skateboard" @click.native="fetchAllProducts">Boards</router-link>
+    <router-link class="nav-links" to="/products/wheel" @click.native="fetchAllProducts">Wheels</router-link>
     <router-link class="nav-links" to="/apparel">Apparel</router-link>
-    <router-link class="nav-links" to="/bags">Bags</router-link>
+    <router-link class="nav-links" to="/products/totebag" @click.native="fetchAllProducts">Bags</router-link>
     <div class="cartlogin">
       <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
@@ -30,7 +30,11 @@ export default {
  methods:{
    showCart(){
      this.$store.dispatch('showCartModal')
-   }
+   },
+  fetchAllProducts(){
+      const route = this.$route.path.substring(1).split('/')[1]
+      this.$store.dispatch('fetchAllProducts', route)
+    }
   }
 };
 </script>

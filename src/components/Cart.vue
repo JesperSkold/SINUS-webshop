@@ -6,7 +6,7 @@
 			<h2>Your Cart</h2>
 			<img src="../assets/close.svg" alt="" @click="closeModal" />
       </div>
-			<Product v-for="product in products" :key="product.id" :product="product" />
+			<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" />
 			<section class="checkout">
 				<h4>Checkout Total: <span>$17452</span></h4>
 				<router-link to="/checkout"><button @click="closeModal">RIDE TO CHECKOUT</button></router-link>

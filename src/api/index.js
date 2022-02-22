@@ -8,7 +8,7 @@ export function saveToken(token) {
 
 export async function fetchAllProducts(){
   try{
-    const response = await axios.get('/items')
+    const response = await axios.get('/items', {params: {category: 'tshirt'}})
     return response
   } catch (error){
     return error.response

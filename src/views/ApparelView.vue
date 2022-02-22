@@ -1,6 +1,6 @@
 <template>
   <div class="apparel">
-      <div class="hoodies">
+    <div class="hoodies">
         <router-link to="/hoodies">
           <h3>
             Hoodies
@@ -32,6 +32,7 @@
           <SinusButton>Shop now</SinusButton>
         </router-link>
       </div>
+       
   </div>
 </template>
 
@@ -49,17 +50,18 @@ export default {
 .apparel {
   display: grid;
   grid-template-areas:
-    "hoodies hoodies hoodies"
-    "tshirts socks caps";
-  padding: 1rem;
+    "tshirts socks caps"
+    "hoodies hoodies hoodies";
+  padding: 0 2.5rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 5rem;
-  margin-top: 4rem;
+  margin: 5rem 0 ;
 }
 
 .apparel > div {
   border-radius: 16px;
+  background-color: #881616;
   padding: 1rem;
 }
 
@@ -71,26 +73,33 @@ h3 {
 
 .hoodies {
   grid-area: hoodies;
-  background: url('../assets/product-template.png') no-repeat 80% #EEEEEE;
+  background: 
+  url('http://localhost:5000/images/sinus-hoodie-green.png') center no-repeat,
+  url('http://localhost:5000/images/sinus-hoodie-ash.png') left no-repeat,
+  url('http://localhost:5000/images/sinus-hoodie-purple.png') right no-repeat;
+  background-size: 40%;
   height: 20rem;
 }
 
 .tshirts {
   grid-area: tshirts;
-  background: tomato;
   height: 20rem;
+  background: url('http://localhost:5000/images/sinus-tshirt-yellow.png') right no-repeat;
+  background-size: 70%;
 }
 
 .socks {
   grid-area: socks;
-  background: tomato;
   height: 20rem;
+  background: url('http://localhost:5000/images/sinus-socks-ash.png') top right no-repeat;
+  background-size: 60%;
 }
 
 .caps {
   grid-area: caps;
-  background: tomato;
   height: 20rem;
+  background: url('http://localhost:5000/images/sinus-cap-purple.png') right no-repeat;
+  background-size: 80%;
 }
 
 </style>

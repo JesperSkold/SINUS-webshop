@@ -58,18 +58,24 @@ export default {
   grid-template-areas:
     "tshirts socks caps"
     "hoodies hoodies hoodies";
-  padding: 0 2.5rem;
+  padding: 2.5rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 5rem;
-  margin: 5rem 0 ;
 }
 
 .apparel > div {
   border-radius: 16px;
   background-color: #881616;
   padding: 1rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: 500ms ease all;
+  &:hover {
+    background-color: black; 
+    transition: 500ms ease all;
+  }
 }
+
 
 h3 {
   color: white;

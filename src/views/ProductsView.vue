@@ -2,9 +2,14 @@
   <div class="products-view">
     <div class="products-view-top">
       <div class="path"><p>products / {{route}}</p></div>
-        <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/>
-      <div class="filter" @click="filterDisplay = true">
-        <p>Filters</p>
+        <!-- <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/> -->
+      <div class="filter" @click="filterDisplay = true">        
+        <select 
+          class="filters-select"
+          v-model="activeSortType"
+        >
+          <option v-for="type in sortTypes" :key="type.name" :value="type.value">{{type.name}}</option>
+        </select>
         <img class="filter-icon" src="../assets/filter.svg" alt="">
       </div>
       <div class="line"></div>
@@ -17,24 +22,16 @@
 
 <script>
 import Product from '@/components/Product.vue'
-import Filters from '@/components/Filters.vue'
+// import Filters from '@/components/Filters.vue'
 
 export default {
-  components: { Product, Filters },
+  components: { Product },
+  // components: { Product, Filters },
   data(){return{
     filterDisplay: false,
+    activeSortType: 'low',
+    sortTypes: [{name: 'Newest', value: 'new'}, {name: 'Oldest', value: 'old'}, {name: 'Low Price', value: 'low'}, {name: 'High Price', value: 'high'}]
     }},
-  // watch: {
-  //   pathWatcher(){
-  //     if(this.path == this.$route.path)
-  //     this.fetchAllProducts()
-  //   }
-  // },
-  //   watch: {
-  //   $route() {
-  //     this.fetchAllProducts
-  //   }
-  // },
  
   methods: {
     fetchAllProducts(){
@@ -44,6 +41,11 @@ export default {
   },
   computed: {
     products(){
+      // if(this.activeSortType == 'new'){
+
+      // } else if (this.activeSortType == 'old'){
+
+      // }
       return this.$store.state.products
     },
     route(){
@@ -101,6 +103,18 @@ p {
 
 .filter:hover {
   cursor: pointer;
+}
+
+.filters-select {
+  // appearance: none;
+  font-size: 1rem;
+  font-family: 'Mukhta Malar', sans-serif;
+  // background: url('../assets/arrow-up.svg') no-repeat;
+  background: none;
+  text-align: right;
+  background-size: 16px;
+  background-position: center right;
+  border: none;
 }
 
 .line {

@@ -9,14 +9,17 @@
             alt="Shopping cart"
           />
         </router-link>
-        <router-link to="">
-          <img
-            :src="'http://localhost:5000' + '/images/' + product.imgFile"
-            class="product-image"
-            height="200"
-            @click="showProductModal"
-          />
-        </router-link>
+        <!-- <router-link to=""> -->
+        <img
+          :src="'http://localhost:5000' + '/images/' + product.imgFile"
+          class="product-image"
+          height="200"
+          @click="
+            showProductModal();
+            activeProduct(product.id);
+          "
+        />
+        <!-- </router-link> -->
       </div>
       <router-link to="/product/:category/:id">
         <p class="product-title">{{ product.title }}</p>
@@ -53,6 +56,9 @@ export default {
   methods: {
     showProductModal() {
       this.$store.dispatch("showProductModal");
+    },
+    activeProduct(id) {
+      this.$store.dispatch("activeProduct", id);
     },
   },
 };

@@ -7,13 +7,13 @@ import SingleProduct from '../views/SingleProductView.vue'
 import Account from '../views/AccountView.vue'
 import Checkout from '../views/CheckoutView.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
     path: '/products/:category',
@@ -21,32 +21,31 @@ const routes = [
     component: ProductsView
   },
   {
-    path: '/apparel',
-    name: 'Apparel',
-    component: ApparelView
+    path: "/apparel",
+    name: "Apparel",
+    component: ApparelView,
   },
   {
-    path: '/singleProduct',
-    name: 'SingleProduct',
-    component: SingleProduct
+    path: "/singleProduct",
+    name: "SingleProduct",
+    component: SingleProduct,
   },
   {
-    path: '/account',
-    name: 'Account',
-    component: Account
+    path: "/account",
+    name: "Account",
+    component: Account,
   },
   {
-    path: '/checkout',
-    name: 'Checkout',
-    component: Checkout
+    path: "/checkout",
+    name: "Checkout",
+    component: Checkout,
   },
-  
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

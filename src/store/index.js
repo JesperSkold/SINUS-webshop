@@ -7,6 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
+    productId: null,
+    singleProduct: null,
     showCartModal: false,
     showProductModal: false,
   },
@@ -19,6 +21,14 @@ export default new Vuex.Store({
     },
     showProductModal(state) {
       state.showProductModal = !state.showProductModal;
+    },
+    saveProductId(state, id) {
+      state.productId = id;
+    },
+    setActiveProduct(state) {
+      state.singleProduct = state.singleProduct = state.products.find(
+        (x) => x.id === state.productId
+      );
     },
   },
   actions: {
@@ -36,6 +46,18 @@ export default new Vuex.Store({
     },
     showProductModal(context) {
       context.commit("showProductModal");
+    },
+    activeProduct(context, id) {
+      context.commit("saveProductId", id);
+      context.commit("setActiveProduct");
+    },
+    async registerUser(context, credentials){
+      const response = await API.registerUser(credentials.email, credentials.name, credentials.password, credentials.address.street, credentials.address.zip, credentials.address.city)
+      if (response.status === 200) {
+        await API.saveToken(response.data.token)
+      }else{
+        console.log(response.data.error);
+      }
     },
   },
   modules: {},

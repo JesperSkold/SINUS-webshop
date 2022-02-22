@@ -2,15 +2,37 @@
   <div class="wrapper" v-if="showProduct">
     <div class="modal-overlay"></div>
     <div class="product-view">
-      <div class="top-title">
-        <img src="../assets/close.svg" alt="" @click="closeProductModal" />
+      <img
+        src="../assets/close.svg"
+        alt=""
+        @click="closeProductModal"
+        class="close-button"
+      />
+      <div class="product-info">
+        <img
+          :src="'http://localhost:5000' + '/images/' + getProduct.imgFile"
+          class="product-image"
+          height="400"
+        />
+        <div class="product-text">
+          <h3>{{ getProduct.title }} {{ getProduct.category }}</h3>
+          <p>{{ getProduct.longDesc }}</p>
+          <div class="price-button">
+            <h4>${{ getProduct.price }}</h4>
+            <SinusButton>ADD TO CART</SinusButton>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import SinusButton from "@/components/SinusButton";
 export default {
+  components: {
+    SinusButton,
+  },
   methods: {
     closeProductModal() {
       this.$store.dispatch("showProductModal");
@@ -20,11 +42,34 @@ export default {
     showProduct() {
       return this.$store.state.showProductModal;
     },
+    getProduct() {
+      return this.$store.state.singleProduct;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+h4 {
+  color: rgb(146, 1, 1);
+}
+.product-text {
+  flex-direction: column;
+  min-width: 300px;
+}
+.product-info,
+.price-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
 .product-view {
   position: absolute;
   position: fixed;

@@ -1,19 +1,20 @@
 <template>
-  <div class="personal-info">
+  <form class="personal-info" @submit.prevent="register">
     <div class="adress-email">
-      <input type="text" placeholder="E-mail" />
-      <input type="text" placeholder="Adress" />
+      <input type="text" placeholder="E-mail" v-model="email"/>
+      <input type="password" placeholder="Password" v-model="password"/>
+      <input type="text" placeholder="Adress" v-model="street"/>
     </div>
     <div class="name-input">
-      <input type="text" placeholder="First name" />
-      <input type="text" placeholder="Last name" />
+      <input type="text" placeholder="First name" v-model="firstName"/>
+      <input type="text" placeholder="Last name" v-model="lastName"/>
     </div>
     <div class="city-zip">
-      <input type="text" placeholder="City" />
-      <input type="text" placeholder="Zip code" />
+      <input type="text" placeholder="City" v-model="city" />
+      <input type="text" placeholder="Zip code" v-model="zip"/>
     </div>
     <SinusButton class="sinus-button">Sign up</SinusButton>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -21,8 +22,31 @@ import SinusButton from "@/components/SinusButton";
 export default {
   components: { SinusButton },
   data() {
-    return {};
+    return {
+      email: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      street: "",
+      zip: "",
+      city: "",
+    };
   },
+  methods:{
+    async register(){
+      await this.$store.dispatch('registerUser', 
+      {
+        email: this.email,
+        name: this.firstName + this.lastName,
+        password: this.password,
+        address:{
+          street: this.street,
+          zip: this.zip,
+          city: this.city 
+        }
+      })
+    }
+  }
 };
 </script>
 

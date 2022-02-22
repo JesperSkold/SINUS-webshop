@@ -1,11 +1,12 @@
 <template>
   <div class="nav">
-    <img :src="sinusLogo" class="sinus-logo" />
-    <router-link to="/">Home</router-link>
-    <router-link to="/products">Boards</router-link>
-    <router-link to="/">Wheels</router-link>
-    <router-link to="/">Apparel</router-link>
-    <router-link to="/">Bags</router-link>
+    <router-link to="/">
+      <img :src="sinusLogo" class="sinus-logo" />
+    </router-link>
+    <router-link class="nav-links" to="/products">Boards</router-link>
+    <router-link class="nav-links" to="/wheels">Wheels</router-link>
+    <router-link class="nav-links" to="/apparel">Apparel</router-link>
+    <router-link class="nav-links" to="/bags">Bags</router-link>
     <div class="cartlogin">
       <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
@@ -40,7 +41,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  border: 1px solid black;
+  border-bottom: 2px solid black;
   height: 8rem;
 }
 
@@ -54,11 +55,29 @@ export default {
 
 a {
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
-
-  
+  transition: all 200ms ease;
 }
+
+.nav-links {
+  &.router-link-exact-active {
+    transform: scale(1.2);
+    color: #003827;
+    transition: all 200ms ease;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+  &.router-link-exact-active:hover {
+    transform: scale(1.2);
+    transition: all 200ms ease
+  }
+  &:hover {
+    transform: scale(1.1);
+    transition: all 200ms ease
+  }
+}
+
 
 img{
   margin: 0 1rem

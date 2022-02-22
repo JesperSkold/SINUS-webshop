@@ -15,19 +15,18 @@
 
 <template>
   <article class="product">
-  
     <div class="product-image-container">
-      <router-link to="/cart">
+      <router-link to="">
         <img class="shopping-cart" src="../assets/shopping-cart.svg" alt="Shopping cart">
       </router-link>
-      <router-link to="/product/:category/:id">
-      <img :src="'http://localhost:5000' + '/images/'+ product.imgFile" height="292" />
+      <router-link to="">
+      <img :src="'http://localhost:5000' + '/images/'+ product.imgFile" class="product-image" height="200" />
       </router-link>
     </div>
     <router-link to="/product/:category/:id">
       <p class="product-title">{{product.title}}</p>
     </router-link>
-    <p class="product-price">{{product.price}}</p>
+    <p class="product-price">${{product.price}}</p>
   </article>
 </template>
 
@@ -48,19 +47,24 @@ export default {
 .product {
   display: grid;
   position: relative;
-  justify-content: center;
-  width: 19rem;
+  place-items: center;
+  width: 14rem;
   padding: 1rem;
 }
 
-.product-image {
-  height: 18rem;
-  margin: 0 auto;
+.product-image:hover {
+  filter: brightness(1.1);
 }
 
 .shopping-cart {
   position: absolute;
   right: 2rem;
+  transition: 100ms ease-in
+}
+
+.shopping-cart:hover {
+  transform: scale(1.1);
+  transition: 100ms ease-in
 }
 
 .product-title, .product-price {
@@ -71,5 +75,7 @@ export default {
 .product-price {
   color: #881616
 }
+
+
 
 </style>

@@ -43,17 +43,13 @@ a {
   color: black;
 
   &.router-link-exact-active {
-    text-decoration: underline;
+    color: #003827;
+  
   }
 }
 
-a:hover {
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
 
-a.active {
-  text-decoration-line: underline;
-}
+
 
 h1 {
   font-size: 6rem;

@@ -51,6 +51,14 @@ export default new Vuex.Store({
       context.commit("saveProductId", id);
       context.commit("setActiveProduct");
     },
+    async registerUser(context, credentials){
+      const response = await API.registerUser(credentials.email, credentials.name, credentials.password, credentials.address.street, credentials.address.zip, credentials.address.city)
+      if (response.status === 200) {
+        await API.saveToken(response.data.token)
+      }else{
+        console.log(response.data.error);
+      }
+    },
   },
   modules: {},
 });

@@ -4,13 +4,10 @@
       <div class="path"><p>Products / Hoodies</p></div>
         <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/>
       <div class="filter" @click="filterDisplay = true">
-        <img class="filter-icon" src="../assets/filter.svg" alt="">
         <p>Filters</p>
+        <img class="filter-icon" src="../assets/filter.svg" alt="">
       </div>
       <div class="line"></div>
-    </div>
-    <div class="categories-navigation">
-      <Categories />
     </div>
     <div class="products-list">
       <Product v-for="product in products" :key="product.id" :product="product"/>
@@ -20,11 +17,10 @@
 
 <script>
 import Product from '@/components/Product.vue'
-import Categories from '@/components/Categories.vue'
 import Filters from '@/components/Filters.vue'
 
 export default {
-  components: { Product, Categories, Filters },
+  components: { Product, Filters },
   data(){return{
     filterDisplay: false,
     }},
@@ -48,8 +44,8 @@ export default {
 <style scoped lang="scss">
 
 .products-view {
-  display: grid;
-  grid-template-areas: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   margin-top: 4rem;
   place-items: center;
 }
@@ -62,8 +58,7 @@ p {
 
 .products-view-top {
   display: grid;
-  grid-column: 2/3;
-  width: 50rem;
+  width: 60rem;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
@@ -88,7 +83,7 @@ p {
 }
 
 .line {
-  width: 80%;
+  width: 90%;
   grid-column: 1/4;
   grid-row: 2/3;
   margin-bottom: 1rem;
@@ -96,16 +91,11 @@ p {
   border-top: 2px black solid;
 }
 
-.categories-navigation {
-  align-self: start;
-}
-
 .products-list {
   display: grid;
-  width: 50rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  padding: 0;
+  column-gap: 4rem;
 }
 
 </style>>

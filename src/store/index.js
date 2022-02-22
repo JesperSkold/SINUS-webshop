@@ -35,7 +35,7 @@ export default new Vuex.Store({
     async fetchAllProducts(context, route) {
       const response = await API.fetchAllProducts(route);
       if (response.status === 200) {
-        context.commit("fetchAllProducts", response.data.products);
+        context.commit("fetchAllProducts", response.data);
       } else {
         console.log(response);
       }

@@ -1,7 +1,7 @@
 <template>
   <div class="apparel">
     <div class="hoodies">
-        <router-link to="/hoodies">
+        <router-link to="products/hoodie" @click.native="fetchAllProducts">
           <h3>
             Hoodies
           </h3>
@@ -9,7 +9,7 @@
         </router-link>
       </div>
       <div class="tshirts">
-        <router-link to="/tshirts">
+        <router-link to="/products/tshirt" @click.native="fetchAllProducts">
           <h3>
             T-Shirts
           </h3>
@@ -17,7 +17,7 @@
         </router-link>
       </div>
       <div class="socks">
-        <router-link to="/socks">
+        <router-link to="/products/socks" @click.native="fetchAllProducts">
           <h3>
             Socks
           </h3>
@@ -25,7 +25,7 @@
         </router-link>
       </div>
       <div class="caps">
-        <router-link to="/caps">
+        <router-link to="/products/cap" @click.native="fetchAllProducts">
           <h3>
             Caps
           </h3>
@@ -40,7 +40,13 @@
 import SinusButton from '@/components/SinusButton.vue'
 
 export default {
-  components: { SinusButton }
+  components: { SinusButton },
+  methods: {
+      fetchAllProducts(){
+      const route = this.$route.path.substring(1).split('/')[1]
+      this.$store.dispatch('fetchAllProducts', route)
+    }
+  }
 
 }
 </script>

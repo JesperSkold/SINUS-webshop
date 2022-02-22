@@ -1,11 +1,11 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/HomeView.vue";
-import Products from "../views/ProductsView.vue";
-import ApparelView from "../views/ApparelView.vue";
-import SingleProduct from "../views/SingleProductView.vue";
-import Account from "../views/AccountView.vue";
-import Checkout from "../views/CheckoutView.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/HomeView.vue'
+import ProductsView from '../views/ProductsView.vue'
+import ApparelView from '../views/ApparelView.vue'
+import SingleProduct from '../views/SingleProductView.vue'
+import Account from '../views/AccountView.vue'
+import Checkout from '../views/CheckoutView.vue'
 
 Vue.use(VueRouter);
 
@@ -16,9 +16,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/products",
-    name: "Products",
-    component: Products,
+    path: '/products/:category',
+    name: 'Products',
+    component: ProductsView
   },
   {
     path: "/apparel",

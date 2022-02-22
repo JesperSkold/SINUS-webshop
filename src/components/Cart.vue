@@ -41,9 +41,9 @@ export default {
 			return this.$store.state.products;
 		},
 	},
-	beforeMount() {
-		this.fetchAllProducts();
-	},
+	// beforeMount() {
+	// 	this.fetchAllProducts();
+	// },
 };
 </script>
 

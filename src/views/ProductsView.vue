@@ -1,7 +1,7 @@
 <template>
   <div class="products-view">
     <div class="products-view-top">
-      <div class="path"><p>Products / Hoodies</p></div>
+      <div class="path"><p>products / {{route}}</p></div>
         <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/>
       <div class="filter" @click="filterDisplay = true">
         <p>Filters</p>
@@ -24,20 +24,41 @@ export default {
   data(){return{
     filterDisplay: false,
     }},
+  // watch: {
+  //   pathWatcher(){
+  //     if(this.path == this.$route.path)
+  //     this.fetchAllProducts()
+  //   }
+  // },
+  //   watch: {
+  //   $route() {
+  //     this.fetchAllProducts
+  //   }
+  // },
+ 
   methods: {
     fetchAllProducts(){
-      this.$store.dispatch('fetchAllProducts')
+      const route = this.$route.path.substring(1).split('/')[1]
+      this.$store.dispatch('fetchAllProducts', route)
     }
   },
   computed: {
     products(){
       return this.$store.state.products
+    },
+    route(){
+      return this.$route.path.substring(1).split('/')[1]
     }
   },
+
+  // updated(){
+  //     this.fetchAllProducts()
+  //     console.log("bajs")
+  // },
   
-  beforeMount() {
-      this.fetchAllProducts()
-    }
+  // beforeMount() {
+  //     this.fetchAllProducts()
+  //   }
 }
 </script>
 

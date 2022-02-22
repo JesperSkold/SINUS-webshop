@@ -6,9 +6,10 @@ export function saveToken(token) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-export async function fetchAllProducts(){
+export async function fetchAllProducts(route){
   try{
-    const response = await axios.get('/items', {params: {category: 'tshirt'}})
+    console.log(route)
+    const response = await axios.get('/items', {params: {category: route}})
     return response
   } catch (error){
     return error.response

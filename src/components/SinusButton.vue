@@ -21,6 +21,7 @@ export default {
     font-weight: bold;
     font-size: 1rem;
     text-transform: uppercase;
+    cursor: pointer;
   }
 
   button:active{

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Cart />
+    <ProductModal />
     <NavBar />
     <router-view />
     <Footer />
@@ -11,20 +12,23 @@
 import Cart from "@/components/Cart";
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
+import ProductModal from "@/components/ProductModal.vue";
 
 export default {
-  components:{
-     NavBar,
-     Footer,
-     Cart 
-     },
+  components: {
+    NavBar,
+    Footer,
+    Cart,
+    ProductModal,
+  },
 };
 </script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Mukta+Malar:wght@400;700&display=swap");
 
-body, html{
+body,
+html {
   margin: 0;
   padding: 0;
 }
@@ -44,12 +48,8 @@ a {
 
   &.router-link-exact-active {
     color: #003827;
-  
   }
 }
-
-
-
 
 h1 {
   font-size: 6rem;
@@ -67,7 +67,7 @@ h4 {
 }
 
 h5 {
-  font-size: 1.5rem
+  font-size: 1.5rem;
 }
 
 p,
@@ -81,5 +81,4 @@ label {
 button {
   font-size: 0.875rem;
 }
-
 </style>

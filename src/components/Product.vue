@@ -3,16 +3,25 @@
   <article class="product" v-if="!modalView">
     <div class="product-image-container">
       <router-link to="">
-        <img class="shopping-cart" src="../assets/shopping-cart.svg" alt="Shopping cart">
+        <img
+          class="shopping-cart"
+          src="../assets/shopping-cart.svg"
+          alt="Shopping cart"
+        />
       </router-link>
       <router-link to="">
-      <img :src="'http://localhost:5000' + '/images/'+ product.imgFile" class="product-image" height="200" />
+        <img
+          :src="'http://localhost:5000' + '/images/' + product.imgFile"
+          class="product-image"
+          height="200"
+          @click="showProductModal"
+        />
       </router-link>
     </div>
     <router-link to="/product/:category/:id">
-      <p class="product-title">{{product.title}}</p>
+      <p class="product-title">{{ product.title }}</p>
     </router-link>
-    <p class="product-price">${{product.price}}</p>
+    <p class="product-price">${{ product.price }}</p>
   </article>
 
   <article v-if="modalView">
@@ -34,9 +43,14 @@
   </div>
 </template>
 
-
 <script>
 export default {
+  methods: {
+    showProductModal() {
+      this.$store.dispatch("showProductModal");
+    },
+  },
+};
   props: {product: Object, modalView: Boolean}
 }
 </script>
@@ -77,20 +91,23 @@ export default {
 .shopping-cart {
   position: absolute;
   right: 2rem;
-  transition: 100ms ease-in
+  transition: 100ms ease-in;
 }
 
 .shopping-cart:hover {
   transform: scale(1.1);
-  transition: 100ms ease-in
+  transition: 100ms ease-in;
 }
 
-.product-title, .product-price {
+.product-title,
+.product-price {
   text-align: center;
   margin: 0;
 }
 
 .product-price {
-  color: #881616
+  color: #881616;
 }
+
 </style>
+

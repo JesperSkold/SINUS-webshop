@@ -1,29 +1,19 @@
 <template>
   <div class="filter-container">
-    <img src="../assets/close.svg" class="close" @click="$emit('close')" height="30" width="30">
-    <h3>Sort by</h3>
     <div class="sort-type">
       <div class="dropdown-items">
         <div @click="active = !active" class="active-sort-type">
           <h5 class="active">{{ activeSortType }}</h5>
-          <img src="../assets/arrow-up.svg" class="arrow" width="30">
+          <img src="../assets/arrow-up.svg" class="arrow" :class="{rotate: active}" width="30">
         </div>
         <div class="sort-types" v-if="active">
-          <h5 v-for="type in sortTypesFiltered" :key="type" @click="activeSortType = type">
+          <h5 v-for="type in sortTypesFiltered" :key="type" @click="activateSortType(type)">
             {{type}}
           </h5>
         </div>
       </div>
-      <div class="slider-container">
-        <input 
-          type="range"
-          id="price"
-          name="price"
-          min="10"
-          max="5000"
-        >
-      </div>
     </div>
+    <img src="../assets/close.svg" class="close" @click="$emit('close')" height="30" width="30">
   </div>
 </template>
 
@@ -32,11 +22,18 @@ export default {
   data(){return {
     active: false,
     activeSortType: 'Newest',
-    sortTypes: ['Newest', 'Oldest', 'Price (lowest)', 'Price (highest)']
+    sortTypes: ['Newest', 'Oldest', 'Price (lowest)', 'Price (highest)'],
   }},
+  methods: {
+    activateSortType(type){
+      this.activeSortType = type
+      this.$emit('close')
+    }
+  },
   computed: {
     sortTypesFiltered(){
       return this.sortTypes.filter(type => type != this.activeSortType)
+      
     }
   }
 
@@ -48,13 +45,14 @@ export default {
 .filter-container {
   position: absolute;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   right: 5%;
   top: 25%;
-  border-radius: 7px;
+  border-radius: 3px;
   z-index: 2;
-  height: 24rem;
-  width: 18rem;
+  height: 10rem;
+  width: 12rem;
   padding: 1rem;
   background: white;
   border: 2px black solid;
@@ -62,7 +60,7 @@ export default {
 
 
 .close {
-  align-self: end;
+  align-self: start;
 }
 
 .close:hover {
@@ -71,10 +69,7 @@ export default {
 
 .active {
   text-decoration: underline;
-}
-
-h3 {
-  margin: 0rem;
+  text-decoration-thickness: 2px;
 }
 
 h5 {
@@ -97,6 +92,10 @@ h5:hover {
   transform: rotate(180deg);
   align-self: center;
   margin-left: 0.5rem
+}
+
+.rotate {
+  transform: rotate(0deg)
 }
 
 

@@ -28,7 +28,7 @@
           :src="'http://localhost:5000' + '/images/' + product.imgFile"
           class="product-image"
           height="200"
-          @click="showProductModal(product.id)"
+          @click="showProductModal"
         />
       </router-link>
     </div>
@@ -48,9 +48,8 @@ export default {
     },
   },
   methods: {
-    showProductModal(id) {
+    showProductModal() {
       this.$store.dispatch("showProductModal");
-      this.$emit("sendId", id);
     },
   },
 };

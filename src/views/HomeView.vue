@@ -12,7 +12,7 @@
     </div>
     <div class="boards">
       <h3>Boards</h3>
-      <router-link to="/products/skateboard" @click.native="fetchAllProducts">
+      <router-link to="/products/skateboard">
         <SinusButton>view more</SinusButton>
       </router-link>
     </div>
@@ -24,14 +24,14 @@
     </div>
     <div class="wheels">
       <h3>Wheels</h3>
-      <router-link to="/products/wheel" @click.native="fetchAllProducts">
+      <router-link to="/products/wheel">
         <SinusButton>view more</SinusButton>
       </router-link>
     </div>
     <div class="bags">
       <div class="bags-flex">
         <h3>Bags</h3>
-        <router-link to="/products/totebag" @click.native="fetchAllProducts">
+        <router-link to="/products/totebag">
           <SinusButton>view more</SinusButton>
         </router-link>
       </div>
@@ -45,12 +45,7 @@ import SinusButton from '../components/SinusButton.vue'
 
 export default {
   components: {SinusButton},
-  methods: {
-    fetchAllProducts(){
-    const route = this.$route.path.substring(1).split('/')[1]
-    this.$store.dispatch('fetchAllProducts', route)
-    }
-  }
+  
 }
 </script>
 

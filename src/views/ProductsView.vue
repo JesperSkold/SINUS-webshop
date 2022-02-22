@@ -2,7 +2,6 @@
   <div class="products-view">
     <div class="products-view-top">
       <div class="path"><p>products / {{route}}</p></div>
-        <!-- <Filters v-if="filterDisplay" class="filters-modal" @close="filterDisplay = false"/> -->
       <div class="filter" @click="filterDisplay = true">        
         <select 
           class="filters-select"
@@ -22,30 +21,18 @@
 
 <script>
 import Product from '@/components/Product.vue'
-// import Filters from '@/components/Filters.vue'
 
 export default {
   components: { Product },
-  // components: { Product, Filters },
   data(){return{
     filterDisplay: false,
     activeSortType: 'low',
     sortTypes: [{name: 'Newest', value: 'new'}, {name: 'Oldest', value: 'old'}, {name: 'Lowest price', value: 'low'}, {name: 'Highest price', value: 'high'}]
     }},
  
-  methods: {
-    fetchAllProducts(){
-      const route = this.$route.path.substring(1).split('/')[1]
-      this.$store.dispatch('fetchAllProducts', route)
-    }
-  },
   computed: {
     products(){
-      // if(this.activeSortType == 'new'){
-
-      // } else if (this.activeSortType == 'old'){
-
-      // }
+  
       return this.$store.state.products
     },
     route(){
@@ -59,15 +46,17 @@ export default {
       return routeFixed + 's'
     }
   },
+  beforeMount(){
+    const route = this.$route.path.substring(1).split('/')[1]
+      this.$store.dispatch('fetchAllProducts', route)
+  },
 
-  // updated(){
-  //     this.fetchAllProducts()
-  //     console.log("bajs")
-  // },
-  
-  // beforeMount() {
-  //     this.fetchAllProducts()
-  //   }
+  watch: {
+    '$route.path': function () {
+      const route = this.$route.path.substring(1).split('/')[1]
+      this.$store.dispatch('fetchAllProducts', route)
+    }
+  },
 }
 </script>
 

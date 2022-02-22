@@ -3,10 +3,10 @@
     <router-link to="/">
       <img :src="sinusLogo" class="sinus-logo" />
     </router-link>
-    <router-link class="nav-links" to="/products/skateboard" @click.native="fetchAllProducts">Boards</router-link>
-    <router-link class="nav-links" to="/products/wheel" @click.native="fetchAllProducts">Wheels</router-link>
+    <router-link class="nav-links" to="/products/skateboard">Boards</router-link>
+    <router-link class="nav-links" to="/products/wheel">Wheels</router-link>
     <router-link class="nav-links" to="/apparel">Apparel</router-link>
-    <router-link class="nav-links" to="/products/totebag" @click.native="fetchAllProducts">Bags</router-link>
+    <router-link class="nav-links" to="/products/totebag">Bags</router-link>
     <div class="cartlogin">
       <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />

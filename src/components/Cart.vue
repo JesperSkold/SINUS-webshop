@@ -1,6 +1,6 @@
 <template>
 	<div class="wrapper" v-if="showCart">
-		<div class="modal-overlay"></div>
+		<div class="modal-overlay" @click="closeModal"></div>
 		<div class="cart-view">
 			<div class="top-title">
 			<h2>Your Cart</h2>
@@ -9,17 +9,21 @@
 			<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" />
 			<section class="checkout">
 				<h4>Checkout Total: <span>$17452</span></h4>
-				<router-link to="/checkout"><button @click="closeModal">RIDE TO CHECKOUT</button></router-link>
+				<router-link to="/checkout">
+					<SinusButton v-on:click.native="closeModal">RIDE TO CHECKOUT</SinusButton>
+				</router-link>
 			</section>
 		</div>
 	</div>
 </template>
 
 <script>
+import SinusButton from "@/components/SinusButton.vue"
 import Product from "@/components/Product.vue";
 export default {
 	components: {
 		Product,
+		SinusButton
 	},
 	methods: {
 		fetchAllProducts() {
@@ -90,17 +94,13 @@ export default {
 			margin: 0;
 		}
 		button {
-			border-radius: 0.3rem;
-			height: 4rem;
-			width: 10rem;
-			margin-top: 2rem;
-			background: $btn-background;
-			color: white;
+			margin-top: 1.5rem;
 		}
 	}
 }
 
 .modal-overlay {
+	cursor: pointer;
 	position: absolute;
 	position: fixed;
 	top: 0;

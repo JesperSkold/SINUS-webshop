@@ -41,3 +41,14 @@ export async function registerUser(email, name, password, street, zip, city){
     return error.response
   }
 }
+export async function loginUser(email, password){
+  try{
+    const response = await axios.post('/auth', {
+      email,
+      password
+    })
+    return response
+  } catch (error){
+    return error.response
+  }
+}

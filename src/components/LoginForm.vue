@@ -1,16 +1,16 @@
 <template>
   <div class="login-form">
-    <div class="login">
+    <form class="login" @submit.prevent="loginAccount">
       <h2>Login</h2>
       <label for="">Email</label>
-      <input type="text" />
+      <input type="text" v-model="email"/>
       <label for="">Password</label>
-      <input type="password" />
+      <input type="password" v-model="password"/>
       <p class="sign-up">Sign up</p>
       <div class="button">
         <SinusButton>Login</SinusButton>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -19,8 +19,16 @@ import SinusButton from "@/components/SinusButton.vue";
 export default {
   components: { SinusButton },
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+    };
   },
+  methods:{
+    async loginAccount(){
+     await this.$store.dispatch('auth', {email: this.email, password: this.password})
+    }
+  }
 };
 </script>
 

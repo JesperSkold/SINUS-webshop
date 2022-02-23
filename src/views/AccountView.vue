@@ -1,7 +1,7 @@
 <template>
   <div class="account-container">
-    <LoginForm v-if="loggedIn == false" />
-    <CreateAccount v-if="signUp == true" />
+    <LoginForm v-if="loggedIn == null" />
+    <CreateAccount v-if="loggedIn == false" />
     <MyAccount v-if="loggedIn == true" />
   </div>
 </template>

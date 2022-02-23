@@ -3,14 +3,14 @@
 		<div class="modal-overlay" @click="closeModal"></div>
 		<div class="cart-view">
 			<div class="top-title">
-			<h2>Your Cart</h2>
-			<img src="../assets/close.svg" alt="" @click="closeModal" />
+        <h3>Your Cart</h3>
+        <img src="../assets/close.svg" alt="" @click="closeModal" />
       </div>
 			<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" />
 			<section class="checkout">
-				<h4>Checkout Total: <span>$17452</span></h4>
+				<h5>Checkout Total: <span>${{total}}</span></h5>
 				<router-link to="/checkout">
-					<SinusButton v-on:click.native="closeModal">RIDE TO CHECKOUT</SinusButton>
+					<SinusButton v-on:click.native="closeModal">TO CHECKOUT</SinusButton>
 				</router-link>
 			</section>
 		</div>
@@ -38,13 +38,18 @@ export default {
 			return this.$store.state.showCartModal;
 		},
 		products() {
-			return this.$store.state.products;
+			return this.$store.state.cart;
 		},
-	},
-	// beforeMount() {
-	// 	this.fetchAllProducts();
-	// },
-};
+		total(){
+      let cart = this.$store.state.cart
+      let sum = 0
+      for(let i = 0; i < cart.length; i++){
+        sum = sum + (cart[i].amount * cart[i].price)
+      }
+      return sum
+    },
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -52,49 +57,51 @@ export default {
 
 .top-title{
   display: flex;
-  h2{
-    padding: 0 2rem;
-  }
-  img{
-    padding: 0 2rem;
-    align-self: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: #f4f4f4;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+
+  h3{
+    margin:0
   }
 }
 
 .cart-view {
-	right: 0;
 	position: absolute;
-	width: 30rem;
-	height: 85vh;
-	position: fixed;
+  // padding: 2rem;
 	right: 0;
+	width: 40vw;
+	height: 100vh;
+	position: fixed;
 	overflow-y: auto;
-	background: #fff;
+	background: white;
 	z-index: 999;
 	img {
-		position: fixed;
-		right: 1rem;
 		cursor: pointer;
 	}
 
 	.checkout {
 		align-items: center;
+    // padding: 2rem;
 		display: flex;
 		flex-direction: column;
-		height: 15vh;
-		width: inherit;
-		border-top: 0.5rem solid rgba(128, 128, 128, 0.424);
-		position: fixed;
+		height: 20vh;
+		width: 40vw;
+    background: #f4f4f4;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+		// border-top: 0.5rem solid rgba(128, 128, 128, 0.424);
+		position: sticky;
 		bottom: 0;
-		background: white;
+		// background: white;
 		span {
 			color: $price-color;
 		}
-		h4 {
-			margin: 0;
+		h5 {
+			margin: 0.5rem 0 0;
 		}
 		button {
-			margin-top: 1.5rem;
+			margin-top: 0.5rem
 		}
 	}
 }

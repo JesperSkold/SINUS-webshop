@@ -7,10 +7,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
+    cart : [],
     productId: null,
     singleProduct: null,
     showCartModal: false,
     showProductModal: false,
+
   },
   mutations: {
     fetchAllProducts(state, fetchedProducts) {
@@ -18,6 +20,9 @@ export default new Vuex.Store({
     },
     showCartModal(state) {
       state.showCartModal = !state.showCartModal;
+      if(localStorage.getItem('cart')){
+        state.cart = JSON.parse(localStorage.getItem('cart'))
+      }
     },
     showProductModal(state) {
       state.showProductModal = !state.showProductModal;
@@ -30,6 +35,15 @@ export default new Vuex.Store({
         (x) => x.id === state.productId
       );
     },
+    addToCart(state, product){
+      const needle = state.cart.find(cartProduct => cartProduct.id == product.id)
+      if(needle){
+        needle.amount++
+      } else{
+        state.cart.push({...product, amount: 1})
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart) )
+    }
   },
   actions: {
     async fetchAllProducts(context, route) {
@@ -51,6 +65,10 @@ export default new Vuex.Store({
       context.commit("saveProductId", id);
       context.commit("setActiveProduct");
     },
+    addToCart(context, product){
+      context.commit("addToCart", product)
+    },
+
     async registerUser(context, credentials){
       const response = await API.registerUser(credentials.email, credentials.name, credentials.password, credentials.address.street, credentials.address.zip, credentials.address.city)
       if (response.status === 200) {

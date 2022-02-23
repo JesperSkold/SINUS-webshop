@@ -19,7 +19,7 @@
           <p>{{ getProduct.longDesc }}</p>
           <div class="price-button">
             <h4>${{ getProduct.price }}</h4>
-            <SinusButton>ADD TO CART</SinusButton>
+            <SinusButton @click.native="addToCart(getProduct)">ADD TO CART</SinusButton>
           </div>
         </div>
       </div>
@@ -37,6 +37,10 @@ export default {
     closeProductModal() {
       this.$store.dispatch("showProductModal");
     },
+    addToCart(product){
+      this.$store.dispatch("addToCart", product)
+      console.log(product)
+    }
   },
   computed: {
     showProduct() {

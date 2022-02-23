@@ -22,7 +22,7 @@
         <!-- </router-link> -->
       </div>
       <router-link to="/product/:category/:id">
-        <h4 class="product-title">{{ product.title }}</h4>
+        <h5 class="product-title">{{ product.title + ' ' + product.category }}</h5>
       </router-link>
       <h5 class="product-price">${{ product.price }}</h5>
     </article>
@@ -127,6 +127,7 @@ export default {
 .product-price {
   text-align: center;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .product-price {

@@ -59,6 +59,14 @@ export default new Vuex.Store({
         console.log(response.data.error);
       }
     },
+    async auth(context, credentials){
+      const response = await API.loginUser(credentials.email, credentials.password)
+      if (response.status === 200) {
+        await API.saveToken(response.data.token)
+      }else{
+        console.log(response.data.error);
+      }
+    }
   },
   modules: {},
 });

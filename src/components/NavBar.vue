@@ -45,6 +45,15 @@ export default {
     checkLogin(){
       return this.$store.state.userLoggedIn
     }
+  },
+  watch: {
+    '$store.state.showCartModal': function () {
+      if(this.$store.state.showCartModal){
+        document.documentElement.style.overflow = "hidden"
+      } else {
+        document.documentElement.style.overflow = "auto"
+      }
+    }
   }
 };
 </script>

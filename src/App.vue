@@ -21,7 +21,7 @@ export default {
     Cart,
     ProductModal,
   },
-};
+}
 </script>
 
 <style lang="scss">

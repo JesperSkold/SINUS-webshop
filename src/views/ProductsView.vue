@@ -34,7 +34,6 @@ export default {
  
   computed: {
     products(){
-  
       return this.$store.state.products
     },
     route(){
@@ -46,8 +45,11 @@ export default {
         return 'socks'
       }
       return routeFixed + 's'
-    }
-  },
+    },
+    modalActive(){
+      return this.$store.state.showCartModal
+      }
+    },
   beforeMount(){
     const route = this.$route.path.substring(1).split('/')[1]
       this.$store.dispatch('fetchAllProducts', route)
@@ -56,7 +58,7 @@ export default {
     '$route.path': function () {
       const route = this.$route.path.substring(1).split('/')[1]
       this.$store.dispatch('fetchAllProducts', route)
-    }
+    },
   },
 }
 </script>

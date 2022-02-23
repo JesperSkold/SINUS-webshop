@@ -12,10 +12,11 @@
       <router-link class="nav-links" to="/products/totebag">Bags</router-link>
     </div>
     <div class="cartlogin">
-      <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
-      <!-- </router-link> -->
-      <router-link to="/account">
+      <router-link to="/login" v-if="!checkLogin">
+        <img :src="userLogin" class="user-login" />
+      </router-link>
+      <router-link to="/account" v-else>
         <img :src="userLogin" class="user-login" />
       </router-link>
     </div>
@@ -39,6 +40,11 @@ export default {
       const route = this.$route.path.substring(1).split('/')[1]
       this.$store.dispatch('fetchAllProducts', route)
     }
+  },
+  computed:{
+    checkLogin(){
+      return this.$store.state.userLoggedIn
+    }
   }
 };
 </script>
@@ -49,7 +55,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  // border-bottom: 2px solid black;
   height: 6rem;
   background: #f4f4f4;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
@@ -86,8 +91,6 @@ a {
     transform: scale(1.2);
     color: #003827;
     transition: all 200ms ease;
-    // text-decoration: underline;
-    // text-decoration-thickness: 2px;
   }
   &:hover {
     transform: scale(1.2);

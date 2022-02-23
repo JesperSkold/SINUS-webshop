@@ -6,7 +6,9 @@
       <input type="text" v-model="email"/>
       <label for="">Password</label>
       <input type="password" v-model="password"/>
+      <router-link to="signup">
       <p class="sign-up">Sign up</p>
+      </router-link>
       <div class="button">
         <SinusButton>Login</SinusButton>
       </div>
@@ -45,11 +47,9 @@ export default {
   flex-direction: column;
   margin: 2rem;
 }
-
-.sign-up {
-  padding: 0;
-  margin: auto 5px auto auto;
+a, .sign-up {
   color: blue;
+  margin: auto 5px auto auto;
   text-decoration: underline;
   cursor: pointer;
 }

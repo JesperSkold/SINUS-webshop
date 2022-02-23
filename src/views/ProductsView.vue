@@ -1,5 +1,6 @@
 <template>
   <div class="products-view">
+<!-- 
     <div class="products-view-top">
       <div class="path"><p>products / {{route}}</p></div>
       <div class="filter" @click="filterDisplay = true">        
@@ -9,10 +10,11 @@
         >
           <option v-for="type in sortTypes" :key="type.name" :value="type.value">{{type.name}}</option>
         </select>
-        <!-- <img class="filter-icon" src="../assets/filter.svg" alt=""> -->
       </div>
       <div class="line"></div>
-    </div>
+    </div> 
+-->
+
     <div class="products-list">
       <Product v-for="product in products" :key="product.id" :product="product"/>
     </div>
@@ -50,7 +52,6 @@ export default {
     const route = this.$route.path.substring(1).split('/')[1]
       this.$store.dispatch('fetchAllProducts', route)
   },
-
   watch: {
     '$route.path': function () {
       const route = this.$route.path.substring(1).split('/')[1]
@@ -65,7 +66,7 @@ export default {
 .products-view {
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
+  padding: 2.5rem 8rem;
   place-items: center;
 }
 
@@ -77,7 +78,7 @@ p {
 
 .products-view-top {
   display: grid;
-  width: 60rem;
+  width: 100%;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
@@ -131,7 +132,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  column-gap: 4rem;
+  gap: 2.5rem;
 }
 
 </style>>

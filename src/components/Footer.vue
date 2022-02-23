@@ -39,6 +39,7 @@ footer {
 	background-repeat: no-repeat;
 	background-image: url("../assets/skater.jpg");
 	display: flex;
+	box-shadow: 4px -4px 16px rgba(0, 0, 0, 0.25);
 }
 
 h1,h2,h3,h4{

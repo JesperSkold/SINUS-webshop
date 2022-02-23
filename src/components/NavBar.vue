@@ -1,12 +1,16 @@
 <template>
   <div class="nav">
-    <router-link to="/">
-      <img :src="sinusLogo" class="sinus-logo" />
-    </router-link>
-    <router-link class="nav-links" to="/products/skateboard">Boards</router-link>
-    <router-link class="nav-links" to="/products/wheel">Wheels</router-link>
-    <router-link class="nav-links" to="/apparel">Apparel</router-link>
-    <router-link class="nav-links" to="/products/totebag">Bags</router-link>
+    <div class="logo">
+      <router-link to="/">
+        <img :src="sinusLogo" class="sinus-logo" />
+      </router-link>
+    </div>
+    <div class="nav-links-container">
+      <router-link class="nav-links" to="/products/skateboard">Boards</router-link>
+      <router-link class="nav-links" to="/products/wheel">Wheels</router-link>
+      <router-link class="nav-links" to="/apparel">Apparel</router-link>
+      <router-link class="nav-links" to="/products/totebag">Bags</router-link>
+    </div>
     <div class="cartlogin">
       <!-- <router-link to="/checkout"> -->
       <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
@@ -45,8 +49,20 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  border-bottom: 2px solid black;
-  height: 8rem;
+  // border-bottom: 2px solid black;
+  height: 6rem;
+  background: #f4f4f4;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.nav-links-container {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.sinus-logo {
+  height: 4rem;
 }
 
 .shopping-cart{
@@ -60,8 +76,9 @@ export default {
 a {
   text-decoration: none;
   font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.5);
   font-weight: bold;
-  transition: all 200ms ease;
+  transition: all 100ms ease;
 }
 
 .nav-links {
@@ -69,15 +86,12 @@ a {
     transform: scale(1.2);
     color: #003827;
     transition: all 200ms ease;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-  }
-  &.router-link-exact-active:hover {
-    transform: scale(1.2);
-    transition: all 200ms ease
+    // text-decoration: underline;
+    // text-decoration-thickness: 2px;
   }
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+    color: rgba(0, 0, 0, 0.75);
     transition: all 200ms ease
   }
 }

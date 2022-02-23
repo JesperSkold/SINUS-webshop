@@ -1,7 +1,9 @@
 <template>
-  <form action="" class="checkout-form">
+  <div class="checkout">
     <CreateAccount />
-    <div class="payment-container">
+  </div>
+  <!-- <form action="" class="checkout-form"> -->
+    <!-- <div class="payment-container">
       <div class="payment-info">
         <div class="card-number">
           <input type="text" placeholder="Card Number" />
@@ -13,14 +15,14 @@
       </div>
       <SinusButton>ORDER</SinusButton>
     </div>
-  </form>
+  </form> -->
 </template>
 
 <script>
 import CreateAccount from "@/components/CreateAccount";
-import SinusButton from "@/components/SinusButton";
+// import SinusButton from "@/components/SinusButton";
 export default {
-  components: { CreateAccount, SinusButton },
+  components: { CreateAccount,  },
   data() {
     return {};
   },
@@ -28,10 +30,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form {
+.checkout {
   display: flex;
-  flex-direction: column;
-  align-content: flex-end;
+  margin: auto
+
 }
 input {
   padding: 1rem;

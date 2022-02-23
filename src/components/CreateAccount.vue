@@ -1,9 +1,9 @@
 <template>
 <div class="wrapper">
-  <form class="personal-info" @submit.prevent="register">
+  <form class="personal-info" @submit.prevent="">
     <div class="adress-email">
       <input type="text" placeholder="E-mail" v-model="email"/>
-      <input type="password" placeholder="Password" v-model="password"/>
+      <input v-if="$store.state.userLoggedIn" type="password" placeholder="Password" v-model="password"/>
       <input type="text" placeholder="Adress" v-model="street"/>
     </div>
     <div class="name-input">
@@ -14,7 +14,8 @@
       <input type="text" placeholder="City" v-model="city" />
       <input type="text" placeholder="Zip code" v-model="zip"/>
     </div>
-    <SinusButton class="sinus-button">Sign up</SinusButton>
+    <SinusButton v-if="!path" class="sinus-button" @click.native="register">Sign up</SinusButton>
+    <SinusButton v-else class="sinus-button" @click.native="placeOrder">Order</SinusButton>
   </form>
   </div>
 </template>
@@ -34,6 +35,11 @@ export default {
       city: "",
     };
   },
+  computed: {
+    path(){
+      return this.$route.path == '/checkout'
+    }
+  },
   methods:{
     async register(){
       await this.$store.dispatch('registerUser', 
@@ -47,9 +53,22 @@ export default {
           city: this.city 
         }
       })
+    },
+    placeOrder(){
+      this.$store.dispatch('placeOrder', 
+      {
+        email: this.email,
+        name: this.firstName + this.lastName,
+        address:{
+          street: this.street,
+          zip: this.zip,
+          city: this.city 
+        }
+      })
     }
   }
-};
+}
+
 </script>
 
 <style lang="scss" scoped>

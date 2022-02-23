@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/HomeView.vue'
 import ProductsView from '../views/ProductsView.vue'
 import ApparelView from '../views/ApparelView.vue'
-import SingleProduct from '../views/SingleProductView.vue'
 import Account from '../views/AccountView.vue'
 import Checkout from '../views/CheckoutView.vue'
 import SignupView from '../components/CreateAccount.vue'
@@ -26,11 +25,6 @@ const routes = [
     path: "/apparel",
     name: "Apparel",
     component: ApparelView,
-  },
-  {
-    path: "/singleProduct",
-    name: "SingleProduct",
-    component: SingleProduct,
   },
   {
     path: "/account",

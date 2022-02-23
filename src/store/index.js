@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     products: [],
     cart : [],
+    accountInfo: null,
     productId: null,
     singleProduct: null,
     showCartModal: false,
@@ -47,6 +48,9 @@ export default new Vuex.Store({
     },
     loggedIn(state){
       state.userLoggedIn = true
+    },
+    saveAccountInfo(state, accInfo){
+      state.accountInfo = accInfo
     }
   },
   actions: {
@@ -89,6 +93,15 @@ export default new Vuex.Store({
         await API.saveToken(response.data.token)
         context.commit('loggedIn')
         VueRouter.push('/account')
+      }else{
+        console.log(response.data.error);
+      }
+    },
+    async getAccountInfo(context){
+      const response = await API.fetchAccountInfo()
+      if (response.status === 200) {
+        console.log(response.data);
+        context.commit('saveAccountInfo', response.data)
       }else{
         console.log(response.data.error);
       }

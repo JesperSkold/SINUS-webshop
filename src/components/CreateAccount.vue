@@ -39,7 +39,7 @@ export default {
       await this.$store.dispatch('registerUser', 
       {
         email: this.email,
-        name: this.firstName + this.lastName,
+        name: `${this.firstName} ${this.lastName}`,
         password: this.password,
         address:{
           street: this.street,

@@ -7,6 +7,7 @@
             class="shopping-cart"
             src="../assets/shopping-cart.svg"
             alt="Shopping cart"
+            @click="addToCart(product)"
           />
         </router-link>
         <!-- <router-link to=""> -->
@@ -28,11 +29,10 @@
 
     <article v-if="modalView">
       <div class="product-image-container-modal">
-        <router-link to="">
+        <router-link to="" class="flex">
           <img
             :src="'http://localhost:5000' + '/images/' + product.imgFile"
             class="product-image"
-            width="200"
           />
         </router-link>
         <div>
@@ -40,7 +40,7 @@
             <h5 class="product-title">{{ product.title }}</h5>
           </router-link>
           <div>
-            <h5>1 x</h5>
+            <h5>{{ product.amount }}x</h5>
             <h5 class="product-price">${{ product.price }}</h5>
           </div>
         </div>
@@ -59,16 +59,23 @@ export default {
     activeProduct(id) {
       this.$store.dispatch("activeProduct", id);
     },
+    addToCart(product){
+      this.$store.dispatch("addToCart", product)
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
 .product-image-container-modal {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 6rem;
+  align-items: center;
   img {
-    max-height: 40vh;
+    max-height: 10rem;
+    max-width: 10rem;
   }
   div {
     margin: 2rem 0 0 5rem;

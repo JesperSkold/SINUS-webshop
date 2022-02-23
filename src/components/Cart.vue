@@ -7,12 +7,13 @@
         <img src="../assets/close.svg" alt="" @click="closeModal" />
       </div>
 			<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" />
-			<section class="checkout">
+			<section v-if="!cartEmpty" class="checkout">
 				<h5>Checkout Total: <span>${{total}}</span></h5>
 				<router-link to="/checkout">
 					<SinusButton v-on:click.native="closeModal">TO CHECKOUT</SinusButton>
 				</router-link>
 			</section>
+      <h5 v-else class="empty">Cart is empty :(</h5>
 		</div>
 	</div>
 </template>
@@ -40,6 +41,13 @@ export default {
 		products() {
 			return this.$store.state.cart;
 		},
+    cartEmpty(){
+      if(this.$store.state.cart.length){
+      return false 
+      } else {
+      return true
+      }
+    },
 		total(){
       let cart = this.$store.state.cart
       let sum = 0
@@ -61,9 +69,13 @@ export default {
   padding: 2rem;
   background: #f4f4f4;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-
+  margin-bottom: 2.5rem;
+  height: 4rem;
   h3{
     margin:0
+  }
+  img {
+    height: 2rem;
   }
 }
 
@@ -83,27 +95,28 @@ export default {
 
 	.checkout {
 		align-items: center;
-    // padding: 2rem;
 		display: flex;
 		flex-direction: column;
 		height: 20vh;
 		width: 40vw;
     background: #f4f4f4;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-		// border-top: 0.5rem solid rgba(128, 128, 128, 0.424);
-		position: sticky;
+		position: absolute;
 		bottom: 0;
-		// background: white;
 		span {
 			color: $price-color;
 		}
 		h5 {
-			margin: 0.5rem 0 0;
+			margin: 1rem 0 0;
 		}
 		button {
 			margin-top: 0.5rem
 		}
 	}
+}
+
+.empty {
+  text-align: center;
 }
 
 .modal-overlay {

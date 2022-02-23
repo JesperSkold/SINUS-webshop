@@ -1,4 +1,5 @@
 <template>
+<div class="wrapper">
   <div class="login-form">
     <form class="login" @submit.prevent="loginAccount">
       <h2>Login</h2>
@@ -13,6 +14,7 @@
         <SinusButton>Login</SinusButton>
       </div>
     </form>
+    </div>
   </div>
 </template>
 
@@ -30,11 +32,15 @@ export default {
     async loginAccount(){
      await this.$store.dispatch('auth', {email: this.email, password: this.password})
     }
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.wrapper{
+  display: flex;
+  justify-content: center;
+}
 .login-form {
   display: flex;
   flex-direction: row;

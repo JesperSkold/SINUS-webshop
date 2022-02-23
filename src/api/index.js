@@ -24,6 +24,15 @@ export async function fetchImages(){
     return error.response
   }
 }
+export async function fetchAccountInfo(){
+  try{
+    const response = await axios.get('/me')
+    return response
+  } catch (error){
+    return error.response
+  }
+}
+
 export async function registerUser(email, name, password, street, zip, city){
   try{
     const response = await axios.post('/register', {

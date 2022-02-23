@@ -1,13 +1,12 @@
 <template>
   <div class="my-account">
-    <section class="account-info">
+    <section class="account-info" v-if="accountInfo">
       <h3>MY ACCOUNT</h3>
-      <!--iterate over account /api/me -->
-      <h5>GÖRAN ARVIDSSON</h5>
-      <!--.name, etc -->
-      <h5>STOCKHOLM</h5>
-      <h5>SOLVÄGEN 25</h5>
-      <h5>137 58</h5>
+      <h5>{{accountInfo.name}}</h5>
+      <h5>{{accountInfo.email}}</h5>
+      <h5>{{accountInfo.address.street}}</h5>
+      <h5>{{accountInfo.address.zip}}</h5>
+      <h5>{{accountInfo.address.city}}</h5>
     </section>
     <section class="account-orders">
       <h3>ORDER HISTORY</h3>
@@ -55,7 +54,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    accountInfo(){
+      return this.$store.state.accountInfo
+    },
+  },
+    async mounted(){
+      await this.$store.dispatch('getAccountInfo')
+    }
+};
 </script>
 
 <style lang="scss" scoped>

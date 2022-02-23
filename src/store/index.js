@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VueRouter from '@/router/index.js'
 import * as API from "@/api/index.js";
 
 Vue.use(Vuex);
@@ -11,6 +12,7 @@ export default new Vuex.Store({
     singleProduct: null,
     showCartModal: false,
     showProductModal: false,
+    userLoggedIn: false,
   },
   mutations: {
     fetchAllProducts(state, fetchedProducts) {
@@ -26,10 +28,13 @@ export default new Vuex.Store({
       state.productId = id;
     },
     setActiveProduct(state) {
-      state.singleProduct = state.singleProduct = state.products.find(
+      state.singleProduct = state.products.find(
         (x) => x.id === state.productId
       );
     },
+    loggedIn(state){
+      state.userLoggedIn = true
+    }
   },
   actions: {
     async fetchAllProducts(context, route) {
@@ -55,6 +60,8 @@ export default new Vuex.Store({
       const response = await API.registerUser(credentials.email, credentials.name, credentials.password, credentials.address.street, credentials.address.zip, credentials.address.city)
       if (response.status === 200) {
         await API.saveToken(response.data.token)
+        context.commit('loggedIn')
+        VueRouter.push('/account')
       }else{
         console.log(response.data.error);
       }
@@ -63,6 +70,8 @@ export default new Vuex.Store({
       const response = await API.loginUser(credentials.email, credentials.password)
       if (response.status === 200) {
         await API.saveToken(response.data.token)
+        context.commit('loggedIn')
+        VueRouter.push('/account')
       }else{
         console.log(response.data.error);
       }

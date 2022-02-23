@@ -6,6 +6,8 @@ import ApparelView from '../views/ApparelView.vue'
 import SingleProduct from '../views/SingleProductView.vue'
 import Account from '../views/AccountView.vue'
 import Checkout from '../views/CheckoutView.vue'
+import SignupView from '../components/CreateAccount.vue'
+import LoginView from '../components/LoginForm.vue'
 
 Vue.use(VueRouter);
 
@@ -39,6 +41,16 @@ const routes = [
     path: "/checkout",
     name: "Checkout",
     component: Checkout,
+  },
+  {
+    path: "/signup",
+    name: "Signup",
+    component: SignupView,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginView,
   },
 ];
 

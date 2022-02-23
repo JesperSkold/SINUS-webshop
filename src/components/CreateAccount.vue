@@ -1,4 +1,5 @@
 <template>
+<div class="wrapper">
   <form class="personal-info" @submit.prevent="register">
     <div class="adress-email">
       <input type="text" placeholder="E-mail" v-model="email"/>
@@ -15,6 +16,7 @@
     </div>
     <SinusButton class="sinus-button">Sign up</SinusButton>
   </form>
+  </div>
 </template>
 
 <script>
@@ -51,10 +53,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form {
+.wrapper{
+  padding: 5rem;
   display: flex;
-  flex-direction: column;
-  align-content: flex-end;
+  justify-content: center;
 }
 input {
   padding: 1rem;
@@ -71,5 +73,6 @@ input {
 .adress-email {
   display: flex;
   flex-direction: column;
+  width: 32.3rem;
 }
 </style>

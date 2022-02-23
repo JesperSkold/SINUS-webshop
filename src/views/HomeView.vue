@@ -5,7 +5,7 @@
         <h1>Plastic-1</h1>
         <h3>now in plastic</h3>
       </div>
-      <img src="../assets/sinus-skateboard-plastic-1.png" alt="">
+      <div></div>
       <router-link to="">
         <h3 class="shop-now">SHOP NOW</h3>
       </router-link>
@@ -29,13 +29,10 @@
       </router-link>
     </div>
     <div class="bags">
-      <div class="bags-flex">
         <h3>Bags</h3>
         <router-link to="/products/totebag">
           <SinusButton>view more</SinusButton>
         </router-link>
-      </div>
-      <img src="../assets/sinus-totebag-gretaedition 1.png" alt="">
     </div>
   </div>
 </template>
@@ -53,11 +50,12 @@ export default {
   h1,h3{
     color: white;
     margin: 0;
+    text-shadow: (0px 4px 4px rgba(0, 0, 0, 0.5));
   }
   .home {
-    padding: 2.5rem;
+    padding: 2.5rem 8rem;
     display: grid;
-    grid-gap: 5rem;
+    grid-gap: 2.5rem;
     grid-template-columns: repeat(3,1fr);
     grid-template-areas: 
       "hero hero hero"
@@ -74,7 +72,7 @@ export default {
   }
 
   .hero:hover .shop-now{
-    transform: scale(1.5);
+    transform: scale(1.05);
     transition: 100ms ease-in-out;
   }
 
@@ -83,13 +81,20 @@ export default {
   }
 
   .hero{
-    background: url("../assets/hero-background.png");
-    background-size: cover;
-    background-position: center;
-    
+    min-height: 20rem;
+    background-image: 
+      url("../assets/sinus-skateboard-plastic-1.png"),
+      url("../assets/hero-background.png");
+    background-size:
+      4rem,
+      cover;
+    background-position:
+      center,
+      center;
+    background-repeat:
+      no-repeat,
+      no-repeat;
     grid-area: hero;
-    // display: flex;
-    // justify-content: space-between;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
@@ -103,7 +108,7 @@ export default {
     background-image: url("../assets/boards-background.png");
     background-size: cover;
     background-position: center;
-    min-height: 26rem;
+    min-height: 20rem;
     grid-area: boards;
   }
 
@@ -111,7 +116,7 @@ export default {
     background-image: url("../assets/apparel-background.png");
     background-size: cover;
     background-position: center;
-    min-height: 26rem;
+    min-height: 20rem;
     grid-area: apparel;
   }
 
@@ -119,38 +124,20 @@ export default {
     background-image: url("../assets/wheels-background.png");
     background-size: cover;
     background-position: center;
-    min-height: 26rem;
+    min-height: 20rem;
     grid-area: wheels;
   }
 
   .bags{
-    background-image: url("../assets/bags-background.png");
-    background-size: cover;
-    background-position: center;
-    min-height: 26rem;
+    background-image: 
+      url('http://localhost:5000/images/sinus-totebag-gretaedition.png'),
+      url("../assets/bags-background.png"),
+    ;
+    background-repeat: no-repeat;
+    background-size: 12rem, 70rem;
+    background-position: center, center;
+    min-height: 20rem;
     grid-area: bags;
-    display: flex;
-    justify-content: space-between;
-
-    img{
-      margin-right: 1rem;
-      position: absolute;
-      right: 0.5rem;
-      bottom: 0.5rem;
-      z-index: -1;
-    }
-  }
-
-  .bags-flex{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-
-    button{
-      z-index:1
-    }
   }
 
 </style>

@@ -13,7 +13,6 @@
         <img
           :src="'http://localhost:5000' + '/images/' + product.imgFile"
           class="product-image"
-          height="200"
           @click="
             showProductModal();
             activeProduct(product.id);
@@ -22,9 +21,9 @@
         <!-- </router-link> -->
       </div>
       <router-link to="/product/:category/:id">
-        <p class="product-title">{{ product.title }}</p>
+        <h4 class="product-title">{{ product.title }}</h4>
       </router-link>
-      <p class="product-price">${{ product.price }}</p>
+      <h5 class="product-price">${{ product.price }}</h5>
     </article>
 
     <article v-if="modalView">
@@ -88,12 +87,22 @@ export default {
   display: grid;
   position: relative;
   place-items: center;
-  width: 14rem;
+  width: 20rem;
   padding: 1rem;
+  border-radius: 8px;
+  background: #f4f4f4;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  transition: 150ms ease all;
 }
 
-.product-image:hover {
-  filter: brightness(1.1);
+.product:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+  transition: 100ms ease all;
+}
+
+.product-image {
+  max-height: 20rem;
+  max-width: 18rem;
 }
 
 .shopping-cart {

@@ -97,6 +97,19 @@ export default new Vuex.Store({
         console.log(response.data.error);
       }
     },
+    async placeOrder(context, credentials){
+      console.log(credentials)
+      const cartIds = []
+      context.state.cart.forEach(item => cartIds.push(item.id))
+      console.log(cartIds)
+      const response = 
+        await API.placeOrder(cartIds, credentials.address.city, credentials.address.street, credentials.address.zip)
+        if(response.status === 200){
+          console.log('defunka')
+        } else {
+          console.log(response)
+        }
+        },
     async getAccountInfo(context){
       const response = await API.fetchAccountInfo()
       if (response.status === 200) {
@@ -106,6 +119,5 @@ export default new Vuex.Store({
         console.log(response.data.error);
       }
     }
-  },
-  modules: {},
+  }
 });

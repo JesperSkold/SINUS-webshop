@@ -61,3 +61,20 @@ export async function loginUser(email, password){
     return error.response
   }
 }
+
+export async function placeOrder(items, city, street, zip){
+  try{
+    console.log(city)
+    const response = await axios.post('/orders', {
+      items,
+      shippingAddress: { 
+        city,
+        street,
+        zip,
+      }
+    })
+    return response
+  } catch (error){
+    return error.response
+  }
+}

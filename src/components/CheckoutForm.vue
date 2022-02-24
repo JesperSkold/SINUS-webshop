@@ -1,6 +1,6 @@
 <template>
   <div class="checkout">
-    <CreateAccount />
+    <CreateAccount @orderSent="$emit('orderEmit')"/>
   </div>
   <!-- <form action="" class="checkout-form"> -->
     <!-- <div class="payment-container">

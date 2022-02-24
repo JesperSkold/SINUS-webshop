@@ -15,6 +15,7 @@ export default new Vuex.Store({
     showCartModal: false,
     showProductModal: false,
     userLoggedIn: false,
+    error: ""
   },
   mutations: {
     fetchAllProducts(state, fetchedProducts) {
@@ -60,6 +61,14 @@ export default new Vuex.Store({
     },
     saveAccountInfo(state, accInfo){
       state.accountInfo = accInfo
+    },
+    error(state, errorMsg){
+      state.error = errorMsg
+        console.log(state.error)
+    },
+    clearCart(state){
+      state.cart = []
+      localStorage.clear()
     }
   },
   actions: {
@@ -96,7 +105,7 @@ export default new Vuex.Store({
         context.commit('loggedIn')
         VueRouter.push('/account')
       }else{
-        console.log(response.data.error);
+        context.commit('error', response.data.error)
       }
     },
     async auth(context, credentials){
@@ -105,8 +114,11 @@ export default new Vuex.Store({
         await API.saveToken(response.data.token)
         context.commit('loggedIn')
         VueRouter.push('/account')
+        context.commit('error', response.data.error)
       }else{
         console.log(response.data.error);
+        context.commit('error', response.data.error)
+        
       }
     },
     async placeOrder(context, credentials){
@@ -121,6 +133,7 @@ export default new Vuex.Store({
         await API.placeOrder(cartIds, credentials.address.city, credentials.address.street, credentials.address.zip)
         if(response.status === 200){
           console.log('Order placed!')
+          context.commit('clearCart')
           console.log(response)
         } else {
           console.log(response)

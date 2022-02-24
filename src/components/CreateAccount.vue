@@ -2,13 +2,10 @@
 <div class="wrapper">
   <form class="personal-info" @submit.prevent="">
     <div class="adress-email">
+      <input type="text" placeholder="Full name" v-model="name"/>
       <input type="text" placeholder="E-mail" v-model="email"/>
-      <input v-if="$store.state.userLoggedIn" type="password" placeholder="Password" v-model="password"/>
+      <input v-if="!path" type="password" placeholder="Password" v-model="password"/>
       <input type="text" placeholder="Adress" v-model="street"/>
-    </div>
-    <div class="name-input">
-      <input type="text" placeholder="First name" v-model="firstName"/>
-      <input type="text" placeholder="Last name" v-model="lastName"/>
     </div>
     <div class="city-zip">
       <input type="text" placeholder="City" v-model="city" />
@@ -27,25 +24,37 @@ export default {
   data() {
     return {
       email: "",
-      firstName: "",
-      lastName: "",
+      name: "",
       password: "",
       street: "",
       zip: "",
       city: "",
     };
   },
+  beforeMount(){
+    if(this.$store.state.userLoggedIn){
+      this.email = this.accountInfo.email
+      this.name = this.accountInfo.name
+      this.street = this.accountInfo.address.street
+      this.city = this.accountInfo.address.city
+      this.zip = this.accountInfo.address.zip
+      
+    }
+  },
   computed: {
     path(){
       return this.$route.path == '/checkout'
-    }
+    },
+    accountInfo(){
+      return this.$store.state.accountInfo
+    },
   },
   methods:{
     async register(){
       await this.$store.dispatch('registerUser', 
       {
         email: this.email,
-        name: `${this.firstName} ${this.lastName}`,
+        name: this.name,
         password: this.password,
         address:{
           street: this.street,
@@ -58,7 +67,7 @@ export default {
       this.$store.dispatch('placeOrder', 
       {
         email: this.email,
-        name: this.firstName + this.lastName,
+        name: this.name,
         address:{
           street: this.street,
           zip: this.zip,
@@ -85,7 +94,7 @@ input {
 .sinus-button {
   margin: 1rem auto auto 11.5rem;
 }
-.name-input input,
+
 .city-zip input {
   width: 13.9rem;
 }

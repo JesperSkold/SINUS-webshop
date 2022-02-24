@@ -28,20 +28,20 @@
     </article>
 
     <article v-if="modalView">
-      <div class="product-image-container-modal">
-        <router-link to="" class="flex">
+      <div class="cart-product">
           <img
             :src="'http://localhost:5000' + '/images/' + product.imgFile"
             class="product-image"
           />
-        </router-link>
         <div>
-          <router-link to="/product/:category/:id">
-            <h5 class="product-title">{{ product.title }}</h5>
-          </router-link>
+            <h5 class="product-title">{{ product.title + ' ' + product.category }}</h5>
           <div>
             <h5>{{ product.amount }}x</h5>
             <h5 class="product-price">${{ product.price }}</h5>
+          </div>
+          <div>
+            <button>&#9135;</button>
+            <button @click="addToCart(product)">+</button>
           </div>
         </div>
       </div>
@@ -68,17 +68,16 @@ export default {
 
 <style lang="scss" scoped>
 
-.product-image-container-modal {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 6rem;
-  align-items: center;
+.cart-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem 2.5rem;
+  place-items: center;
   img {
     max-height: 10rem;
     max-width: 10rem;
   }
   div {
-    margin: 2rem 0 0 5rem;
     display: flex;
     flex-direction: column;
     div {
@@ -86,8 +85,25 @@ export default {
       flex-direction: row;
     }
     h5 {
-      margin: 0 0.2rem;
+      margin: 0.2rem;
     }
+  }
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    color: black;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    margin: .2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+  }
+  button:hover {
+    cursor: pointer;
   }
 }
 .product {

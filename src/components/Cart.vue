@@ -3,10 +3,10 @@
 		<div class="modal-overlay" @click="closeModal"></div>
 		<div class="cart-view">
 			<div class="top-title">
-        <h3>Your Cart</h3>
+        <h5>Your Cart</h5>
         <img src="../assets/close.svg" alt="" @click="closeModal" />
       </div>
-			<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" />
+			<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" class="cart-test"/>
 			<section v-if="!cartEmpty" class="checkout">
 				<h5>Checkout Total: <span>${{total}}</span></h5>
 				<router-link to="/checkout">
@@ -71,19 +71,20 @@ export default {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   margin-bottom: 2.5rem;
   height: 4rem;
-  h3{
-    margin:0
+  h5{
+    margin: 0;
+    align-self: center;
   }
   img {
     height: 2rem;
+    align-self: center;
   }
 }
 
 .cart-view {
 	position: absolute;
-  // padding: 2rem;
 	right: 0;
-	width: 40vw;
+	width: 35vw;
 	height: 100vh;
 	position: fixed;
 	overflow-y: auto;
@@ -98,16 +99,16 @@ export default {
 		display: flex;
 		flex-direction: column;
 		height: 20vh;
-		width: 40vw;
+		width: 35vw;
     background: #f4f4f4;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		span {
 			color: $price-color;
 		}
 		h5 {
-			margin: 1rem 0 0;
+			margin: 0.5rem 0 0;
 		}
 		button {
 			margin-top: 0.5rem
@@ -117,6 +118,10 @@ export default {
 
 .empty {
   text-align: center;
+}
+
+.cart-test:last-of-type{
+  margin-bottom: 25vh;
 }
 
 .modal-overlay {

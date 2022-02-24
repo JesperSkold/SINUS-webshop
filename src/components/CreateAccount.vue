@@ -1,5 +1,6 @@
-<template>
+  <template>
 <div class="wrapper">
+  <h3 v-if="path">Your information</h3>
   <form class="personal-info" @submit.prevent="">
     <div class="adress-email">
       <input type="text" placeholder="Full name" v-model="name"/>
@@ -12,7 +13,10 @@
       <input type="text" placeholder="Zip code" v-model="zip"/>
     </div>
     <SinusButton v-if="!path" class="sinus-button" @click.native="register">Sign up</SinusButton>
-    <SinusButton v-else class="sinus-button" @click.native="placeOrder">Order</SinusButton>
+    <div class="checkout-price" v-else>
+      <h5>Total price: ${{total}}</h5>
+      <SinusButton  class="sinus-button" @click.native="placeOrder">Order</SinusButton>
+    </div>
   </form>
   </div>
 </template>
@@ -48,6 +52,14 @@ export default {
     accountInfo(){
       return this.$store.state.accountInfo
     },
+    total(){
+      let cart = this.$store.state.cart
+      let sum = 0
+      for(let i = 0; i < cart.length; i++){
+        sum = sum + (cart[i].amount * cart[i].price)
+      }
+      return sum
+    },
   },
   methods:{
     async register(){
@@ -82,9 +94,15 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper{
-  padding: 5rem;
+  padding: 4rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h3{
+    margin: 1rem
+  }
 }
 input {
   padding: 1rem;
@@ -92,7 +110,8 @@ input {
   background-color: rgb(232, 231, 231);
 }
 .sinus-button {
-  margin: 1rem auto auto 11.5rem;
+  margin: 1rem
+  // margin: 1rem auto auto 11.5rem;
 }
 
 .city-zip input {
@@ -102,5 +121,15 @@ input {
   display: flex;
   flex-direction: column;
   width: 32.3rem;
+}
+
+.checkout-price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h5{
+    margin: 1rem
+  }
 }
 </style>

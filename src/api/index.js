@@ -77,3 +77,11 @@ export async function placeOrder(items, city, street, zip){
     return error.response
   }
 }
+export async function fetchOrderHistory(){
+  try{
+    const response = await axios.get('/orders')
+    return response
+  } catch (error){
+    return error.response
+  }
+}

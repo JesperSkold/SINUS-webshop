@@ -19,7 +19,7 @@
           <p>{{ getProduct.longDesc }}</p>
           <div class="price-button">
             <h4>${{ getProduct.price }}</h4>
-            <SinusButton @click.native="addToCart(getProduct)">ADD TO CART</SinusButton>
+              <SinusButton @click.native="addToCart(getProduct)">ADD TO CART</SinusButton>
           </div>
         </div>
       </div>

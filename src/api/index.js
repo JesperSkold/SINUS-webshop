@@ -64,7 +64,6 @@ export async function loginUser(email, password){
 
 export async function placeOrder(items, city, street, zip){
   try{
-    console.log(city)
     const response = await axios.post('/orders', {
       items,
       shippingAddress: { 

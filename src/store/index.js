@@ -8,7 +8,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
-    cart : [],
+    cart: [],
+    orderHistory: [],
     accountInfo: null,
     productId: null,
     singleProduct: null,
@@ -51,6 +52,9 @@ export default new Vuex.Store({
     },
     saveAccountInfo(state, accInfo){
       state.accountInfo = accInfo
+    },
+    saveOrderHistory(state, items){
+      state.orderHistory = items
     }
   },
   actions: {
@@ -115,6 +119,15 @@ export default new Vuex.Store({
       if (response.status === 200) {
         console.log(response.data);
         context.commit('saveAccountInfo', response.data)
+      }else{
+        console.log(response.data.error);
+      }
+    },
+    async getOrderHistory(context){
+      const response = await API.fetchOrderHistory()
+      if (response.status === 200) {
+        console.log(response.data, "<--- new");
+        context.commit('saveOrderHistory', response.data)
       }else{
         console.log(response.data.error);
       }

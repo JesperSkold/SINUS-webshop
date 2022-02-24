@@ -12,41 +12,13 @@
       <h3>ORDER HISTORY</h3>
       <!-- iterate over /api/orders -->
       <div class="orders">
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
-        </div>
-        <div>
-          <p>Gretas Fury</p>
-          <p>$220</p>
+        <div v-for="orders in orderHistory" :key="orders.id">
+            {{orders.createdAt.slice(0, 10)}}
+            Order ID:{{orders.id}}
+          <div v-for="items in orders.items" :key="items.id">
+            Price:{{items.price+items.price}}
+            Amount:{{items.amount}}
+          </div> 
         </div>
       </div>
     </section>
@@ -59,9 +31,13 @@ export default {
     accountInfo(){
       return this.$store.state.accountInfo
     },
-  },
+    orderHistory(){
+      return this.$store.state.orderHistory
+    }
+  }, //fetch products, implement find function against products and render product name with id
     async mounted(){
       await this.$store.dispatch('getAccountInfo')
+      await this.$store.dispatch('getOrderHistory')
     }
 };
 </script>
@@ -81,12 +57,12 @@ export default {
 }
 
 .orders {
-  height: 35vh;
   min-width: 15vw;
   overflow: auto;
 
   div {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
 }

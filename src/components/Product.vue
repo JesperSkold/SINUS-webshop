@@ -40,7 +40,7 @@
             <h5 class="product-price">${{ product.price }}</h5>
           </div>
           <div>
-            <button>&#9135;</button>
+            <button @click="removeFromCart(product)">&#9135;</button>
             <button @click="addToCart(product)">+</button>
           </div>
         </div>
@@ -61,6 +61,9 @@ export default {
     },
     addToCart(product){
       this.$store.dispatch("addToCart", product)
+    },
+    removeFromCart(product){
+      this.$store.dispatch("removeFromCart", product)
     }
   },
 };

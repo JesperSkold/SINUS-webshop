@@ -45,7 +45,16 @@ export default new Vuex.Store({
       } else{
         state.cart.push({...product, amount: 1})
       }
-      localStorage.setItem('cart', JSON.stringify(state.cart) )
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    removeFromCart(state, product){
+      const needle = state.cart.find(cartProduct => cartProduct.id == product.id)
+      if(needle.amount > 1){
+        needle.amount--
+      } else{
+        state.cart = state.cart.filter(cartProduct => cartProduct.id != product.id)
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     loggedIn(state){
       state.userLoggedIn = true
@@ -80,6 +89,9 @@ export default new Vuex.Store({
     addToCart(context, product){
       context.commit("addToCart", product)
     },
+    removeFromCart(context, product){
+      context.commit("removeFromCart", product)
+    },
 
     async registerUser(context, credentials){
       const response = await API.registerUser(credentials.email, credentials.name, credentials.password, credentials.address.street, credentials.address.zip, credentials.address.city)
@@ -102,18 +114,23 @@ export default new Vuex.Store({
       }
     },
     async placeOrder(context, credentials){
-      console.log(credentials)
       const cartIds = []
-      context.state.cart.forEach(item => cartIds.push(item.id))
+      for(let i = 0; i < context.state.cart.length; i++){
+        for(let j = 0; j < context.state.cart[i].amount; j++){
+          cartIds.push(context.state.cart[i].id)
+        }
+      }
       console.log(cartIds)
       const response = 
         await API.placeOrder(cartIds, credentials.address.city, credentials.address.street, credentials.address.zip)
         if(response.status === 200){
-          console.log('defunka')
+          console.log('Order placed!')
+          console.log(response)
         } else {
           console.log(response)
         }
-        },
+    },
+
     async getAccountInfo(context){
       const response = await API.fetchAccountInfo()
       if (response.status === 200) {

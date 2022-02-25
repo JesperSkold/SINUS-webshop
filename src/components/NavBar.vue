@@ -12,12 +12,12 @@
       <router-link class="nav-links" to="/products/totebag">Bags</router-link>
     </div>
     <div class="cartlogin">
-      <img @click="showCart" :src="shoppingCart" class="shopping-cart" />
+        <img @click="showCart" :src="shoppingCart" class="shopping-cart" :class="{ add : cartShake }" />
       <router-link to="/login" v-if="!checkLogin">
         <img :src="userLogin" class="user-login" />
       </router-link>
       <router-link to="/account" v-else>
-        <img :src="userLogin" class="user-login" />
+        <img :src="userLogin" class="user-login" :class="{ loggedin : checkLogin }" />
       </router-link>
     </div>
   </div>
@@ -44,6 +44,9 @@ export default {
   computed:{
     checkLogin(){
       return this.$store.state.userLoggedIn
+    },
+    cartShake(){
+      return this.$store.state.cartAnimation
     }
   },
   watch: {
@@ -108,6 +111,21 @@ a {
   }
 }
 
+.add {
+  animation: grow 400ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes grow {
+  50% {
+    transform: scale(1.5) rotate(15deg);
+    filter: brightness(0) saturate(100%) invert(16%) sepia(37%) saturate(1051%) hue-rotate(114deg) brightness(200%) contrast(103%);
+    opacity: 0.5;
+  }
+}
+
+.loggedin {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(37%) saturate(1051%) hue-rotate(114deg) brightness(200%) contrast(103%);
+}
 
 img{
   margin: 0 1rem

@@ -94,3 +94,56 @@ export async function editOrder(id, status){
     return error.response
   }
 }
+  export async function patchProduct(id, title, shortDesc, longDesc, imgFile, category, price){
+    try{
+      const response = await axios.patch('/items/' + id, {
+        title,
+        shortDesc,
+        longDesc,
+        imgFile,
+        category,
+        price,
+      })
+      return response
+    }catch (error){
+      return error.response
+    }
+}
+
+  export async function deleteProduct(id){
+    try{
+      const response = await axios.delete('/items/' + id)
+      return response
+    }catch (error){
+      return error.response
+    }
+  }
+
+  export async function addProduct(title, shortDesc, longDesc, imgFile, category, price){
+    try{
+      const response = await axios.post('/items/', {
+        title,
+        shortDesc,
+        longDesc,
+        imgFile,
+        category,
+        price,
+      })
+      return response
+    }catch (error){
+      return error.response
+    }
+  }
+
+  export async function upload(ref){
+    const formData = new FormData()
+    formData.append("imgFile", ref)
+    console.log(ref);
+    try{
+      const response = await axios.post('/images', formData)
+      return response
+    }catch(error){
+      return error.response
+    }
+  }
+

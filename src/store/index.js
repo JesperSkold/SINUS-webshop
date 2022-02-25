@@ -172,7 +172,7 @@ export default new Vuex.Store({
       if (response.status === 200) {
         console.log(response.data, "<--- new");
         context.commit('saveOrderHistory', response.data)
-      }else{
+      } else{
         console.log(response.data.error);
       }
     },
@@ -182,6 +182,56 @@ export default new Vuex.Store({
       if (response.status === 200) {
         console.log('WOW U EDITTED THE ORDER');
       }else{
+        console.log(response)
+      }
+    },
+    async patchProduct(context, product){
+      const response = await API.patchProduct(
+        product.id,
+        product.title,
+        product.shortDesc,
+        product.longDesc,
+        product.imgFile,
+        product.category,
+        product.price
+        )
+      if (response.status === 200) {
+        console.log('nice patch bro ;)')
+        await context.dispatch('fetchAllProducts', product.category)
+      } else {
+        console.log(response)
+      }
+    },
+    async deleteProduct(context, product){
+      const response = await API.deleteProduct(product.id)
+      if (response.status === 200) {
+        console.log('nice delete bro ;)')
+        await context.dispatch('fetchAllProducts', product.category)
+      } else {
+        console.log(response)
+      }
+    },
+    async addProduct(context, product){
+      const response = await API.addProduct(
+        product.title,
+        product.shortDesc,
+        product.longDesc,
+        product.imgFile,
+        product.category,
+        product.price
+      )
+      if (response.status === 200) {
+        console.log('nice add bro ;)')
+        await context.dispatch('fetchAllProducts', product.category)
+      } else {
+        console.log(response)
+      }
+    },
+    async upload(context, ref){
+      const response = await API.upload(ref)
+      if (response.status === 200) {
+        console.log('nice upload bro ;)')
+      } else {
         console.log(response)
       }
     }

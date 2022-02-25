@@ -8,7 +8,7 @@
           <select>
             <option v-for="category in categories" :value="category" :key="category">
               {{category}}
-              </option>
+            </option>
           </select>
         </form>
       </div>

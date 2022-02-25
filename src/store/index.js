@@ -16,8 +16,9 @@ export default new Vuex.Store({
     showCartModal: false,
     showProductModal: false,
     userLoggedIn: false,
+    error: "",
+    cartAnimation: false
     adminLoggedIn: false,
-    error: ""
   },
   mutations: {
     fetchAllProducts(state, fetchedProducts) {
@@ -48,7 +49,12 @@ export default new Vuex.Store({
         state.cart.push({...product, amount: 1})
       }
       localStorage.setItem('cart', JSON.stringify(state.cart))
+      state.cartAnimation = true
+      setTimeout(() => {
+        state.cartAnimation = false
+      }, 400)
     },
+
     removeFromCart(state, product){
       const needle = state.cart.find(cartProduct => cartProduct.id == product.id)
       if(needle.amount > 1){

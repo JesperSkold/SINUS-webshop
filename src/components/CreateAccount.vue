@@ -158,10 +158,9 @@ input {
   gap: 1rem;
 }
 
-.city-zip input {
-  // width: 14rem;
-  
-}
+// .city-zip input {
+//   // width: 14rem;
+// }
 .adress-email {
   display: flex;
   flex-direction: column;

@@ -17,7 +17,7 @@ export default new Vuex.Store({
     showProductModal: false,
     userLoggedIn: false,
     error: "",
-    cartAnimation: false
+    cartAnimation: false,
     adminLoggedIn: false,
   },
   mutations: {

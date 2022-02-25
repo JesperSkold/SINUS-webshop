@@ -85,3 +85,12 @@ export async function fetchOrderHistory(){
     return error.response
   }
 }
+
+export async function editOrder(id, status){
+  try{
+    const response = await axios.patch('/orders/' + id, {status: status})
+    return response
+  }catch (error){
+    return error.response
+  }
+}

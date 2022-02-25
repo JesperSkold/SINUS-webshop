@@ -16,6 +16,7 @@ export default new Vuex.Store({
     showCartModal: false,
     showProductModal: false,
     userLoggedIn: false,
+    adminLoggedIn: false,
     error: ""
   },
   mutations: {
@@ -73,6 +74,9 @@ export default new Vuex.Store({
     clearCart(state){
       state.cart = []
       localStorage.clear()
+    },
+    setAdmin(state){
+      state.adminLoggedIn = true
     }
   },
   actions: {
@@ -149,6 +153,10 @@ export default new Vuex.Store({
       if (response.status === 200) {
         console.log(response.data);
         context.commit('saveAccountInfo', response.data)
+        if (response.data.role === 'admin') {
+          context.commit('setAdmin')
+          console.log('IAM ADMIN');
+        }
       }else{
         console.log(response.data.error);
       }
@@ -160,6 +168,15 @@ export default new Vuex.Store({
         context.commit('saveOrderHistory', response.data)
       }else{
         console.log(response.data.error);
+      }
+    },
+    async patchOrder(context, order){
+      console.log(order.status);
+      const response = await API.editOrder(order.id, order.status)
+      if (response.status === 200) {
+        console.log('WOW U EDITTED THE ORDER');
+      }else{
+        console.log(response)
       }
     }
   }

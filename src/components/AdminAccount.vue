@@ -1,20 +1,26 @@
 <template>
 	<div class="admin-view">
-    <section class="products">
-    <form @change="getCategory($event.target.value); selectedProduct = null">
-      <select>
-        <option v-for="category in categories" :value="category" :key="category">
-          {{category}}
-          </option>
-      </select>
-    </form>
-    <ul>
-      <li v-for="product in products" :key="product.id"> 
-        id: {{product.id}}, title: {{product.title}}
-        <button @click="selectedProduct = product">EDIT</button>
-        <button @click="deleteProduct(product)">DELETE</button>
-      </li>
-    </ul>
+    <section class="product-management">
+      <h4>PRODUCT MANAGEMENT</h4>
+      <div class="select-category">
+        <p>Select category:</p>
+        <form @change="getCategory($event.target.value); selectedProduct = null">
+          <select>
+            <option v-for="category in categories" :value="category" :key="category">
+              {{category}}
+              </option>
+          </select>
+        </form>
+      </div>
+      <div v-for="product in products" :key="product.id" class="product-list-item">
+        <div>
+          <button @click="selectedProduct = product">EDIT</button>
+          <button @click="deleteProduct(product)">DELETE</button>
+        </div>
+        <p>id: {{product.id}}</p>
+        <p>title: {{product.title}}</p>
+        <p>price: {{product.price}}</p>
+      </div>
     <form v-if="selectedProduct" @submit.prevent="patchProduct">
       <input type="text" v-model="selectedProduct.title" placeholder="title">
       <input type="text" v-model="selectedProduct.shortDesc" placeholder="shortDesc">
@@ -24,8 +30,7 @@
       <input type="text" v-model="selectedProduct.price" placeholder="price">
       <input type="submit">
     </form>
-    <form v-if="newProduct" @submit.prevent="addProduct">
-      <h5>Add product</h5>
+    <form @submit.prevent="addProduct">
       <input type="text" v-model="newProduct.title" placeholder="title">
       <input type="text" v-model="newProduct.shortDesc" placeholder="shortDesc">
       <input type="text" v-model="newProduct.longDesc" placeholder="longDesc">
@@ -40,21 +45,24 @@
     </form>
     </section>
 		<section class="account-orders">
-			<h3>ORDER HISTORY</h3>
+			<h4>ORDER HISTORY</h4>
 			<div class="orders" v-for="item in uniqueOrder" :key="item.id">
-				<h4>OrderID: {{ item.id }}</h4>
+				<p>OrderID: {{ item.id }}</p>
 				<p>
 					Total price: <span>${{ item.sum }}</span>
 				</p>
 				<p>Order date: {{ item.date }}</p>
-        <form action="" @change="updateOrder($event, item.id)">
-          <select name="" id="lol" placeholder="asdfads">
-            <option value="" selected disabled hidden>{{ item.status }}</option>
-            <option value="inProcess">inProcess</option>
-            <option value="shipped">Shipped</option>
-            <option value="canceled">Cancel</option>
-          </select>
-        </form>
+        <div class="order-status-form">
+          <p>Order status:</p>
+          <form action="" @change="updateOrder($event, item.id)">
+            <select name="" id="lol" placeholder="asdfads">
+              <option value="" selected disabled hidden>{{ item.status }}</option>
+              <option value="inProcess">inProcess</option>
+              <option value="shipped">Shipped</option>
+              <option value="canceled">Cancel</option>
+            </select>
+          </form>
+        </div>
 			</div>
 		</section>
 	</div>
@@ -136,45 +144,74 @@ export default {
 
 .admin-view {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 3fr;
+  // padding: 2.5rem 0rem
 }
 
-.products {
+h4 {
+  margin: 2.5rem 0 0 0;
+}
+
+h5 {
+  margin: 0;
+}
+
+.product-management {
   display: flex;
+  border-right: 3px #CCCCCC solid;
   flex-direction: column;
-  // justify-content: center ;
-  padding: 5rem;
+  padding: 0 2rem;
+  align-items: center;
+}
+
+.select-category {
+  display: flex;
+  align-items: center;
+}
+
+.product-list-item {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 0rem 0;
+  button {
+    padding: 0;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
 }
 
 .account-orders {
-  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 	padding: 0 1rem;
-	height: 50vh;
+	height: 60vh;
 	overflow-y: auto;
 }
 .orders {
-  p:nth-child(2) {
-    display: inline;
-    span {
-      color: $price-color;
-    }
-		p:nth-child(3){
-		margin: 0;
-		}
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  // border: 1px black solid;
+  p {
+    margin: 0 1rem 0 0;
   }
-	p:nth-child(4) {
-		margin-top: 0;
-		margin-bottom: 2rem;
-		border-bottom: 1px solid black;
-	}
-	p {
-		display: flex;
-		flex-direction: column;
-	}
-	h4 {
-		margin: 1rem 0;
-	}
-
-
 }
+
+.order-status-form {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+  select {
+    background: none;
+    border: none;
+    font-size: .9rem;
+  }
+}
+
 </style>

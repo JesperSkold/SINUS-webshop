@@ -22,19 +22,23 @@
         <!-- </router-link> -->
       </div>
       <router-link to="/product/:category/:id">
-        <h5 class="product-title">{{ product.title + ' ' + product.category }}</h5>
+        <h5 class="product-title">
+          {{ product.title + " " + product.category }}
+        </h5>
       </router-link>
       <h5 class="product-price">${{ product.price }}</h5>
     </article>
 
     <article v-if="modalView">
       <div class="cart-product">
-          <img
-            :src="'http://localhost:5000' + '/images/' + product.imgFile"
-            class="product-image"
-          />
+        <img
+          :src="'http://localhost:5000' + '/images/' + product.imgFile"
+          class="product-image"
+        />
         <div>
-            <h5 class="product-title">{{ product.title + ' ' + product.category }}</h5>
+          <h5 class="product-title">
+            {{ product.title + " " + product.category }}
+          </h5>
           <div>
             <h5>{{ product.amount }}x</h5>
             <h5 class="product-price">${{ product.price }}</h5>
@@ -59,18 +63,17 @@ export default {
     activeProduct(id) {
       this.$store.dispatch("activeProduct", id);
     },
-    addToCart(product){
-      this.$store.dispatch("addToCart", product)
+    addToCart(product) {
+      this.$store.dispatch("addToCart", product);
     },
-    removeFromCart(product){
-      this.$store.dispatch("removeFromCart", product)
-    }
+    removeFromCart(product) {
+      this.$store.dispatch("removeFromCart", product);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 .cart-product {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,7 +103,7 @@ export default {
     border: none;
     font-size: 1.5rem;
     border-radius: 2px;
-    margin: .2rem;
+    margin: 0.2rem;
     width: 1.5rem;
     height: 1.5rem;
     text-align: center;
@@ -127,6 +130,7 @@ export default {
 }
 
 .product-image {
+  cursor: pointer;
   max-height: 20rem;
   max-width: 18rem;
 }

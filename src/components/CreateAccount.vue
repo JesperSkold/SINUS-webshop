@@ -1,19 +1,22 @@
 <template>
   <div class="wrapper">
     <h3 v-if="path">Your information</h3>
+    <h3 v-else>Sign up</h3>
     <form class="personal-info" @submit.prevent=""> 
       <div class="adress-email">
         <input type="text" placeholder="Full name" v-model="name"/>
         <input type="text" placeholder="E-mail" v-model="email" :class="{error : error}"/>
         <input v-if="!path" type="password" placeholder="Password" v-model="password"/>
-        <input type="text" placeholder="Adress" v-model="street" @click="error2 = false" :class="{error : error2}" />
+        <input type="text" placeholder="Address" v-model="street" @click="error2 = false" :class="{error : error2}" />
       </div>
       <div class="city-zip">
-        <input type="text" placeholder="City" v-model="city" @click="error2 = false" :class="{error : error2}" />
         <input type="text" placeholder="Zip code" v-model="zip" @click="error2 = false" :class="{error : error2}" />
+        <input type="text" placeholder="City" v-model="city" @click="error2 = false" :class="{error : error2}" />
       </div>
       <p v-if="!path && error" class="red">{{errorMessage}}</p>
-      <SinusButton v-if="!path" class="sinus-button" @click.native="register">Sign up</SinusButton>
+      <div v-if="!path" class="btn-flex">
+        <SinusButton class="sinus-button" @click.native="register">Sign up</SinusButton>
+      </div>
       <div class="checkout-price" v-else>
         <h5>Total price: ${{total}}</h5>
           <SinusButton v-if="!cartEmpty" class="sinus-button" @click.native="placeOrder">Order</SinusButton>
@@ -124,22 +127,45 @@ export default {
     margin: 1rem
   }
 }
+
+.personal-info{
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  min-width: 32rem;
+}
+
+.btn-flex{
+  display: flex;
+  justify-content: center;
+}
+
+
 input {
   padding: 1rem;
   font-size: 1rem;
-  background-color: rgb(232, 231, 231);
+  margin: 1rem 0 0 ;
+  // background-color: rgb(232, 231, 231);
+   background: rgb(250, 250, 250);
 }
 .sinus-button {
-  margin: 1rem
+  margin: 1rem 0 0
+  
+}
+.city-zip{
+  display: grid;
+  grid-template-columns:1fr 1fr ;
+  gap: 1rem;
 }
 
 .city-zip input {
-  width: 13.9rem;
+  // width: 14rem;
+  
 }
 .adress-email {
   display: flex;
   flex-direction: column;
-  width: 32.3rem;
+  // width: 32.3rem;
 }
 
 .checkout-price{
@@ -152,6 +178,7 @@ input {
     margin: 1rem
   }
 }
+
 
 .red{
   color: red

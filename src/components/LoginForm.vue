@@ -2,7 +2,7 @@
 <div class="wrapper">
   <div class="login-form">
     <form class="login" @submit.prevent="loginAccount" @click="error = false">
-      <h2>Login</h2>
+      <h2>POOP</h2>
       <label for="">Email</label>
       <input type="text" v-model="email" :class="{red : error}"/>
       <label for="">Password</label>

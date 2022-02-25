@@ -6,7 +6,7 @@ import ApparelView from '../views/ApparelView.vue'
 import Account from '../views/AccountView.vue'
 import Checkout from '../views/CheckoutView.vue'
 import SignupView from '../components/CreateAccount.vue'
-import LoginView from '../components/LoginForm.vue'
+import LoginView from '../views/LogInView.vue'
 
 Vue.use(VueRouter);
 

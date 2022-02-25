@@ -10,7 +10,7 @@
     </div>
     <div class="order-done" v-else>
       <h3>Thank you for your purchase!</h3>
-      <h4>Your order is recieved</h4>
+      <h4>Your order is being handled.</h4>
       <router-link to="/">
         <SinusButton>Back to home</SinusButton>
       </router-link>
@@ -54,7 +54,7 @@ export default {
 	// flex-direction: row;
 	// align-items: center;
   // justify-content: space-between;
-  min-height: 45vh;
+  min-height: 50vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
   // place-items: center;
@@ -89,9 +89,13 @@ export default {
   grid-column: 1/4;
   display: grid;
   place-items: center;
+  align-content: center;
 
-  h3{
-    margin: 0
+  h3 {
+    margin: 0rem
+  }
+  h4 {
+    margin: 1rem
   }
 }
 

@@ -8,7 +8,7 @@
       <div class="hero-product"
       @click="
             showProductModal();
-            activeProduct();
+            homeProduct();
           "
       ></div>
       <router-link to="/products/skateboard">
@@ -54,9 +54,12 @@ export default {
     showProductModal() {
       this.$store.dispatch("showProductModal");
     },
-    activeProduct() {
-      this.$store.dispatch("activeProduct", 16);
-    },
+    // activeProduct() {
+    //   this.$store.dispatch("activeProduct", 16);
+    // },
+    homeProduct(){
+      this.$store.dispatch("activeHomeProduct", 16)
+    }
   },
   mounted(){
     this.$store.dispatch('fetchAllProducts', "skateboard")

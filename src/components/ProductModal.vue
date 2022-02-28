@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" v-if="showProduct">
-    <div class="modal-overlay"></div>
+    <div class="modal-overlay" @click="closeProductModal"></div>
     <div class="product-view">
       <img
         src="../assets/close.svg"
@@ -94,6 +94,7 @@ h4 {
   background-color: white;
 }
 .modal-overlay {
+  cursor: pointer;
   position: absolute;
   position: fixed;
   top: 0;

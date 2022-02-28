@@ -138,6 +138,7 @@ export default {
   position: absolute;
   right: 2rem;
   transition: 100ms ease-in;
+  cursor: pointer;
 }
 
 .shopping-cart:hover {

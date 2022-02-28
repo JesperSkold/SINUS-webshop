@@ -85,11 +85,13 @@ export default new Vuex.Store({
     },
     setAdmin(state){
       state.adminLoggedIn = true
+    },
+    deleteFromCache(state, product){
+      state.products = state.products.filter(foundProduct => foundProduct.id != product.id)
     }
   },
   actions: {
     async fetchAllProducts(context, route) {
-      // console.log(!context.state.cachedCategories.includes(route))
       if(!context.state.cachedCategories.includes(route)){
       const response = await API.fetchAllProducts(route);
       if (response.status === 200) {
@@ -210,6 +212,7 @@ export default new Vuex.Store({
     async deleteProduct(context, product){
       const response = await API.deleteProduct(product.id)
       if (response.status === 200) {
+        context.commit('deleteFromCache', product)
         console.log('nice delete bro ;)')
         await context.dispatch('fetchAllProducts', product.category)
       } else {

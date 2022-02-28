@@ -182,7 +182,7 @@ export default {
   },
 	computed: {
     products(){
-      return this.$store.state.products
+      return this.$store.state.products.filter(product => product.category == this.selectedCategory)
     },
 		uniqueOrder() {
 			let orders = [];

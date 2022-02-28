@@ -34,18 +34,19 @@ export default {
  
   computed: {
     products(){
-      return this.$store.state.products
+      const category = this.$route.path.substring(1).split('/')[1]
+      return this.$store.state.products.filter(item => category == item.category)
     },
-    route(){
-      let routeFixed = this.$route.path.substring(1).split('/')[1]
-      if(routeFixed === 'tshirt'){
-        return 't-Shirts'
-      }
-      else if(routeFixed == 'socks'){
-        return 'socks'
-      }
-      return routeFixed + 's'
-    },
+    // route(){
+    //   let routeFixed = this.$route.path.substring(1).split('/')[1]
+    //   if(routeFixed === 'tshirt'){
+    //     return 't-Shirts'
+    //   }
+    //   else if(routeFixed == 'socks'){
+    //     return 'socks'
+    //   }
+    //   return routeFixed + 's'
+    // },
     modalActive(){
       return this.$store.state.showCartModal
       }

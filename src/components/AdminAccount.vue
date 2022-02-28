@@ -20,8 +20,9 @@
       <div v-if="productManagementView == 'list'" class="edit-delete-products">
         <div v-if="!selectedProduct" class="select-category">
           <p><b>Select category:</b></p>
-          <form @change="getCategory($event.target.value); selectedProduct = null">
-            <select>
+          <!-- <form @change="getCategory($event.target.value); selectedProduct = null"> -->
+          <form @change="getCategory(); selectedProduct = null">
+            <select v-model="selectedCategory">
               <option v-for="category in categories" :value="category" :key="category">
                 {{category}}
               </option>
@@ -67,7 +68,7 @@
         </div>
         <div>
           <p>Price</p>
-          <input type="text" v-model="selectedProduct.price" placeholder="price">
+          <input type="text" v-model="selectedProduct.price" placeholder="price" onkeypress="return /[0-9]/i.test(event.key)">
         </div>
         <input type="submit">
         </form>
@@ -102,7 +103,7 @@
         </div>
         <div>
           <p>Price</p>
-          <input type="text" v-model="newProduct.price" placeholder="price">
+          <input type="text" v-model="newProduct.price" placeholder="price" onkeypress="return /[0-9]/i.test(event.key)">
         </div>
         <input type="submit">
       </form>
@@ -141,6 +142,7 @@
 export default {
   data(){return{
     categories: ['cap', 'hoodie', 'wheel', 'tshirt', 'totebag', 'skateboard', 'socks'],
+    selectedCategory: null,
     selectedProduct: null,
     productManagementView: null,
     newProduct: {
@@ -158,12 +160,14 @@ export default {
 		console.log(orderId)  
       this.$store.dispatch('patchOrder', {status: orderStatus.target.value, id: orderId})
     },
-    getCategory(category){
-      this.$store.dispatch('fetchAllProducts', category)
+    getCategory(){
+      this.$store.dispatch('fetchAllProducts', this.selectedCategory)
       this.selectedProduct = null
     },
     patchProduct(){
       this.$store.dispatch('patchProduct', this.selectedProduct)
+      console.log(this.selectedProduct)
+      this.selectedCategory = this.selectedProduct.category
       this.selectedProduct = null
     },
     deleteProduct(product){
@@ -173,11 +177,6 @@ export default {
       this.$store.dispatch('addProduct', this.newProduct)
     },
     upload(){
-      // console.log(this.$refs.fileField, "LMAO");
-      // console.log(this.$refs.fileField.files[0])
-      // const formData = new FormData()
-      // formData.append("imgFile", this.$refs.fileField.files[0])
-      // console.log(formData);
       this.$store.dispatch('upload', this.$refs.fileField.files[0])
     }
   },

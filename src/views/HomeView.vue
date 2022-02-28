@@ -57,6 +57,9 @@ export default {
     activeProduct() {
       this.$store.dispatch("activeProduct", 16);
     },
+  },
+  mounted(){
+    this.$store.dispatch('fetchAllProducts', "skateboard")
   }
 }
 </script>
@@ -71,7 +74,7 @@ export default {
     height: 260px;
     width: 200px;
     cursor: pointer;
-  }
+    }
   .home {
     padding: 2.5rem 8rem;
     display: grid;

@@ -71,12 +71,8 @@ export default {
       }
   }
 
-  .hero:hover .shop-now{
+  .shop-now:hover{
     transform: scale(1.05);
-    transition: 100ms ease-in-out;
-  }
-
-  .shop-now{
     transition: 100ms ease-in-out;
   }
 

@@ -61,9 +61,6 @@ export default {
       this.$store.dispatch("activeHomeProduct", 16)
     }
   },
-  mounted(){
-    this.$store.dispatch('fetchAllProducts', "skateboard")
-  }
 }
 </script>
 

@@ -2,14 +2,12 @@
   <div class="wrapper">
     <article class="product" v-if="!modalView">
       <div class="product-image-container">
-        <router-link to="">
           <img
             class="shopping-cart"
             src="../assets/shopping-cart.svg"
             alt="Shopping cart"
             @click="addToCart(product)"
           />
-        </router-link>
         <!-- <router-link to=""> -->
         <img
           :src="'http://localhost:5000' + '/images/' + product.imgFile"
@@ -21,11 +19,12 @@
         />
         <!-- </router-link> -->
       </div>
-      <router-link to="/product/:category/:id">
-        <h5 class="product-title">
+        <h5 class="product-title" @click="
+            showProductModal();
+            activeProduct(product.id);
+          ">
           {{ product.title + " " + product.category }}
         </h5>
-      </router-link>
       <h5 class="product-price">${{ product.price }}</h5>
     </article>
 
@@ -146,11 +145,16 @@ export default {
   transition: 100ms ease-in;
 }
 
+.product-title{
+  cursor:pointer
+}
+
 .product-title,
 .product-price {
   text-align: center;
   margin: 0;
   text-transform: capitalize;
+  
 }
 
 .product-price {

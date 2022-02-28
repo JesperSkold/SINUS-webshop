@@ -8,6 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
+    cachedCategories: [],
     cart: [],
     orderHistory: [],
     accountInfo: null,
@@ -22,7 +23,8 @@ export default new Vuex.Store({
   },
   mutations: {
     fetchAllProducts(state, fetchedProducts) {
-      state.products = fetchedProducts;
+      state.products = state.products.concat(fetchedProducts)
+      state.cachedCategories.push(fetchedProducts[0].category)
     },
     showCartModal(state) {
       state.showCartModal = !state.showCartModal;
@@ -87,6 +89,8 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchAllProducts(context, route) {
+      // console.log(!context.state.cachedCategories.includes(route))
+      if(!context.state.cachedCategories.includes(route)){
       const response = await API.fetchAllProducts(route);
       if (response.status === 200) {
         context.commit("fetchAllProducts", response.data);
@@ -94,6 +98,7 @@ export default new Vuex.Store({
         console.log(response);
       }
       console.log(response);
+      }
     },
     showCartModal(context) {
       context.commit("showCartModal");

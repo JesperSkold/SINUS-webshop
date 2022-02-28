@@ -1,12 +1,17 @@
 <template>
-  <div class="home">
+  <div class="home" v-if="!modalView">
     <div class="hero">
       <div class="hero-flex">
         <h1>Plastic-1</h1>
         <h3>now in plastic</h3>
       </div>
-      <div></div>
-      <router-link to="">
+      <div class="hero-product"
+      @click="
+            showProductModal();
+            activeProduct();
+          "
+      ></div>
+      <router-link to="/products/skateboard">
         <h3 class="shop-now">SHOP NOW</h3>
       </router-link>
     </div>
@@ -41,8 +46,18 @@
 import SinusButton from '../components/SinusButton.vue'
 
 export default {
-  components: {SinusButton},
-  
+  props: { modalView: Boolean},
+  components: {
+    SinusButton
+    },
+    methods: {
+    showProductModal() {
+      this.$store.dispatch("showProductModal");
+    },
+    activeProduct() {
+      this.$store.dispatch("activeProduct", 16);
+    },
+  }
 }
 </script>
 
@@ -51,6 +66,11 @@ export default {
     color: white;
     margin: 0;
     text-shadow: (0px 4px 4px rgba(0, 0, 0, 0.5));
+  }
+  .hero-product {
+    height: 260px;
+    width: 200px;
+    cursor: pointer;
   }
   .home {
     padding: 2.5rem 8rem;

@@ -147,3 +147,11 @@ export async function editOrder(id, status){
     }
   }
 
+  export async function fetchHomeProduct(id){
+    try{
+      const response = await axios.get(`/items/${id}`)
+      return response
+    }catch(error){
+      return error.response
+    }
+  }

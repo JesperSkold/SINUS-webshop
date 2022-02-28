@@ -8,7 +8,7 @@
         @click="closeProductModal"
         class="close-button"
       />
-      <div class="product-info">
+      <div class="product-info" v-if="getProduct">
         <img
           :src="'http://localhost:5000' + '/images/' + getProduct.imgFile"
           class="product-image"

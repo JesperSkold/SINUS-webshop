@@ -88,6 +88,10 @@ export default new Vuex.Store({
     },
     deleteFromCache(state, product){
       state.products = state.products.filter(foundProduct => foundProduct.id != product.id)
+    },
+    setActiveHomeProduct(state, product){
+      console.log(product)
+      state.singleProduct = product
     }
   },
   actions: {
@@ -111,6 +115,16 @@ export default new Vuex.Store({
     activeProduct(context, id) {
       context.commit("saveProductId", id);
       context.commit("setActiveProduct");
+    },
+    async activeHomeProduct(context, id){
+      // context.commit("saveProductId", id);
+      const response = await API.fetchHomeProduct(id)
+      if (response.status === 200) {
+        console.log(response);
+        context.commit("setActiveHomeProduct", response.data.post)
+      }else{
+        console.log(response);
+      }
     },
     addToCart(context, product){
       context.commit("addToCart", product)

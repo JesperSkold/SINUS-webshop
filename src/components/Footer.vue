@@ -1,25 +1,29 @@
 <template>
 	<footer>
-		<section>
-			<h3>Help</h3>
-			<p>Contact Us</p>
-			<p>Payments</p>
-			<p>Shopping</p>
-			<p>FAQ</p>
-		</section>
-		<section>
-			<h3>About</h3>
-			<p>History</p>
-			<p>Sustainability</p>
-			<p>Careers</p>
+		<section class="help-about">
+      <div class="help">
+        <h4>Help</h4>
+        <p>Contact Us</p>
+        <p>Payments</p>
+        <p>Shopping</p>
+        <p>FAQ</p>
+      </div>
+      <div class="about">
+        <h4>About</h4>
+        <p>History</p>
+        <p>Sustainability</p>
+        <p>Careers</p>
+      </div>
 		</section>
 		<section>
 			<div class="sinus-container">
-				<img src="../assets/sinus-logo.svg" alt="Sinus Logo"/>
+				<img src="../assets/sinus-logo.svg" alt="Sinus Logo" class="logo"/>
+        <div class="social-media">
+          <img src="../assets/twitter.svg" alt="Twitter" />
+          <img src="../assets/instagram-logo.svg" alt="Instagram" />
+          <img src="../assets/facebook-logo.svg" alt="Facebook" />
+        </div>
 			</div>
-			<img src="../assets/twitter.svg" alt="Twitter" />
-			<img src="../assets/instagram-logo.svg" alt="Instagram" />
-			<img src="../assets/facebook-logo.svg" alt="Facebook" />
 		</section>
 	</footer>
 </template>
@@ -31,47 +35,48 @@ export default {};
 <style lang="scss" scoped>
 @import '@/assets/styles/_global-colors.scss';
 footer {
-	height: 25rem;
+  position: static;
+  bottom: 0;
+	height: 12rem;
+  padding: 0rem 10rem;
 	background-size: cover;
-	background-position: center;
+	background-position: center bottom;
 	background-size: 70%;
 	background-color: #f4f4f4;
 	background-repeat: no-repeat;
 	background-image: url("../assets/skater.jpg");
 	display: flex;
+  align-items: center;
+  justify-content: space-between;
 	box-shadow: 4px -4px 16px rgba(0, 0, 0, 0.25);
 }
 
-h1,h2,h3,h4{
+.help-about {
+  display: flex;
+  width: 15rem;
+  justify-content: space-between;
+}
+
+h4, p{
   margin: 0;
   padding: 0;
 }
 
-section:nth-child(1),
-section:nth-child(2) {
-	margin: 2rem 4rem;
-}
-section:nth-child(3) {
-	margin: 3rem 5rem auto auto;
+p {
+  line-height: 1.5rem;
 }
 
-section:nth-child(3) > img {
-	margin: 4rem 2.5rem;
-}
+
 .sinus-container {
 	display: flex;
-	img{
-		margin-right: 3rem;
-		transform: scale(1.4);
-	}
+  flex-direction: column;
+  align-items: center;
 }
-.logo-text {
-	h1{
-		font-size: 5rem;
-	}
-	h2 {
-		font-size: 1.7rem;
-		color: $primary-greyed-out;
-	}
+
+.social-media {
+  img {
+    margin: .5rem;
+    height: 1.5rem;
+  }
 }
 </style>

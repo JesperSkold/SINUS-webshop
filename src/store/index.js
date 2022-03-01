@@ -24,7 +24,9 @@ export default new Vuex.Store({
   mutations: {
     fetchAllProducts(state, fetchedProducts) {
       state.products = state.products.concat(fetchedProducts)
+      if(fetchedProducts[0]){
       state.cachedCategories.push(fetchedProducts[0].category)
+      }
     },
     showCartModal(state) {
       state.showCartModal = !state.showCartModal;
@@ -86,6 +88,9 @@ export default new Vuex.Store({
     setAdmin(state){
       state.adminLoggedIn = true
     },
+    addProduct(state, product){
+      state.products.push(product)
+    },
     deleteFromCache(state, product){
       state.products = state.products.filter(foundProduct => foundProduct.id != product.id)
     },
@@ -97,14 +102,15 @@ export default new Vuex.Store({
   actions: {
     async fetchAllProducts(context, route) {
       if(!context.state.cachedCategories.includes(route)){
-      const response = await API.fetchAllProducts(route);
-      if (response.status === 200) {
-        context.commit("fetchAllProducts", response.data);
-      } else {
-        console.log(response);
-      }
-      console.log(response);
-      }
+        const responses = await API.fetchAllProducts(route);
+        for (const response of responses) {
+          if (response.status === 200) {
+            context.commit("fetchAllProducts", response.data);
+          }else{
+            console.log(response);
+          }
+        }
+     }
     },
     showCartModal(context) {
       context.commit("showCartModal");
@@ -244,6 +250,7 @@ export default new Vuex.Store({
       )
       if (response.status === 200) {
         console.log('nice add bro ;)')
+        context.commit('addProduct', response.data)
         await context.dispatch('fetchAllProducts', product.category)
       } else {
         console.log(response)

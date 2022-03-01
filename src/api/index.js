@@ -8,14 +8,23 @@ export function saveToken(token) {
 }
 
 export async function fetchAllProducts(route){
+  let pages = [
+    '/items?page=1',
+    '/items?page=2'
+  ]
   try{
-    console.log(route)
-    const response = await axios.get('/items', {params: {category: route}})
-    return response
-  } catch (error){
-    return error.response
+    const responses = axios.all(
+      pages.map((page) => axios.get(page, {
+        params: {category: route}
+      }))
+    )
+    return responses
+  }catch (error){
+    console.log(error);
   }
 }
+
+
 export async function fetchImages(){
   try{
     const response = await axios.get('/images')

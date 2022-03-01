@@ -20,7 +20,6 @@
       <div v-if="productManagementView == 'list'" class="edit-delete-products">
         <div v-if="!selectedProduct" class="select-category">
           <p><b>Select category:</b></p>
-          <!-- <form @change="getCategory($event.target.value); selectedProduct = null"> -->
           <form @change="getCategory(); selectedProduct = null">
             <select v-model="selectedCategory">
               <option v-for="category in categories" :value="category" :key="category">

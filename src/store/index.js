@@ -123,7 +123,6 @@ export default new Vuex.Store({
       context.commit("setActiveProduct");
     },
     async activeHomeProduct(context, id){
-      // context.commit("saveProductId", id);
       const response = await API.fetchHomeProduct(id)
       if (response.status === 200) {
         console.log(response);

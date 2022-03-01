@@ -1,28 +1,13 @@
 <template>
   <div class="checkout">
-    <CreateAccount @orderSent="$emit('orderEmit')"/>
+    <AccountForm @orderSent="$emit('orderEmit')"/>
   </div>
-  <!-- <form action="" class="checkout-form"> -->
-    <!-- <div class="payment-container">
-      <div class="payment-info">
-        <div class="card-number">
-          <input type="text" placeholder="Card Number" />
-        </div>
-        <div class="month-cvc">
-          <input type="text" placeholder="MM/YY" />
-          <input type="text" placeholder="CVC" />
-        </div>
-      </div>
-      <SinusButton>ORDER</SinusButton>
-    </div>
-  </form> -->
 </template>
 
 <script>
-import CreateAccount from "@/components/CreateAccount";
-// import SinusButton from "@/components/SinusButton";
+import AccountForm from "@/components/AccountForm";
 export default {
-  components: { CreateAccount,  },
+  components: { AccountForm,  },
   data() {
     return {};
   },

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <CreateAccount />
+    <AccountForm />
   </div>
 </template>
 
 <script>
-import CreateAccount from "@/components/CreateAccount.vue"
+import AccountForm from "@/components/AccountForm.vue"
 export default {
 components:{
-  CreateAccount,
+  AccountForm,
  },
 }
 </script>

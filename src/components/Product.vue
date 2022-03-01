@@ -8,7 +8,6 @@
             alt="Shopping cart"
             @click="addToCart(product)"
           />
-        <!-- <router-link to=""> -->
         <img
           :src="'http://localhost:5000' + '/images/' + product.imgFile"
           class="product-image"
@@ -17,7 +16,6 @@
             activeProduct(product.id);
           "
         />
-        <!-- </router-link> -->
       </div>
         <h5 class="product-title" @click="
             showProductModal();

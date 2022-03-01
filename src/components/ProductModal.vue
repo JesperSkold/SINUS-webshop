@@ -83,10 +83,6 @@ h4 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   flex-direction: column;
   z-index: 999;
   padding: 5rem;
   border: 2px solid black;

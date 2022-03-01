@@ -131,7 +131,6 @@ export default {
 .personal-info{
   display: flex;
   flex-direction: column;
-  // align-items: center;
   min-width: 32rem;
 }
 
@@ -145,7 +144,6 @@ input {
   padding: 1rem;
   font-size: 1rem;
   margin: 1rem 0 0 ;
-  // background-color: rgb(232, 231, 231);
    background: rgb(250, 250, 250);
 }
 .sinus-button {
@@ -158,13 +156,10 @@ input {
   gap: 1rem;
 }
 
-// .city-zip input {
-//   // width: 14rem;
-// }
+
 .adress-email {
   display: flex;
   flex-direction: column;
-  // width: 32.3rem;
 }
 
 .checkout-price{

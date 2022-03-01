@@ -3,7 +3,7 @@
     <Cart />
     <ProductModal />
     <NavBar />
-    <router-view />
+    <router-view class="router-view"/>
     <Footer />
   </div>
 </template>
@@ -26,6 +26,10 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Mukta+Malar:wght@400;700&display=swap");
+
+.router-view {
+  min-height: 63vh;
+}
 
 body,
 html {

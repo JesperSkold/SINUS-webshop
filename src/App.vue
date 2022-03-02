@@ -28,7 +28,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Mukta+Malar:wght@400;700&display=swap");
 
 .router-view {
-  min-height: 63vh;
+  min-height: 70vh;
 }
 
 body,

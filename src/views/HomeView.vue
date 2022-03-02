@@ -54,9 +54,6 @@ export default {
     showProductModal() {
       this.$store.dispatch("showProductModal");
     },
-    // activeProduct() {
-    //   this.$store.dispatch("activeProduct", 16);
-    // },
     homeProduct(){
       this.$store.dispatch("activeHomeProduct", 16)
     }

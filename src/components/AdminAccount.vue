@@ -210,6 +210,7 @@ export default {
 .admin-view {
   display: grid;
   grid-template-columns: 4fr 3fr;
+  min-height: 69vh;
 }
 
 h4 {

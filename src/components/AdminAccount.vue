@@ -69,13 +69,13 @@
           <p>Price</p>
           <input type="text" v-model="selectedProduct.price" placeholder="price" onkeypress="return /[0-9]/i.test(event.key)">
         </div>
-        <input type="submit">
+        <button class="submit-edit-product">Submit Product</button>
         </form>
         <button @click="selectedProduct = null">Back</button>
       </div>
     </div>
     <div v-if="productManagementView == 'add'" class="add-product">
-      <form @submit.prevent="addProduct" class="add-product-form">
+      <form @submit.prevent="addProduct" class="add-product-form" @click="newProductAdded = false">
         <div>
           <p>Title</p>
           <input type="text" v-model="newProduct.title" placeholder="title">
@@ -104,7 +104,7 @@
           <p>Price</p>
           <input type="text" v-model="newProduct.price" placeholder="price" onkeypress="return /[0-9]/i.test(event.key)">
         </div>
-        <input type="submit">
+        <button class="submit-new-product">Submit Product</button>
       </form>
       <form @submit.prevent="upload" class="upload">
         <input type="file" ref="fileField">
@@ -171,9 +171,18 @@ export default {
     },
     addProduct(){
       this.$store.dispatch('addProduct', this.newProduct)
+      this.newProduct = {
+        title: "",
+        shortDesc: "",
+        longDesc: "",
+        imgFile: "",
+        category: "",
+        price: "",
+      }
     },
     upload(){
       this.$store.dispatch('upload', this.$refs.fileField.files[0])
+      this.newProduct.imgFile = this.$refs.fileField.files[0].name
     }
   },
 	computed: {
@@ -238,10 +247,6 @@ p {
   flex-direction: column;
   width: 80%;
   padding: 1rem;
-  button {
-    align-self: center;
-    margin: 1rem;
-  }
 }
 
 .select-category {
@@ -327,6 +332,13 @@ p {
       flex: 3;
     }
   }
+}
+
+.submit-new-product, .submit-edit-product {
+  margin-top: 1rem;
+  padding: 1rem;
+  justify-self: flex-end;
+  align-self: flex-end;
 }
 
 .active {

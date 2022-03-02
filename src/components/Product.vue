@@ -114,6 +114,7 @@ export default {
   position: relative;
   place-items: center;
   width: 20rem;
+  height: 26rem;
   padding: 1rem;
   border-radius: 8px;
   background: #f4f4f4;

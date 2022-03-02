@@ -2,7 +2,6 @@
   <div class="apparel">
     <div class="hoodies">
         <router-link to="products/hoodie">  
-        <!-- <router-link to="products/hoodie" @click="fetchAllProducts"> -->
           <h3>
             Hoodies
           </h3>
@@ -42,13 +41,6 @@ import SinusButton from '@/components/SinusButton.vue'
 
 export default {
   components: { SinusButton },
-  // methods: {
-  //     fetchAllProducts(){
-  //     const route = this.$route.path.substring(1).split('/')[1]
-  //     this.$store.dispatch('fetchAllProducts', route)
-  //   }
-  // }
-
 }
 </script>
 
@@ -112,9 +104,6 @@ h3 {
     8rem
   ;
 
-  // background-color: #be9022;
-  // background-color: #f4f4f4;
-
   height: 20rem;
       &:hover {
     background-position:
@@ -134,8 +123,6 @@ h3 {
     url('../assets/logo.svg') space,
     linear-gradient(#881616, peru)
   ;
-  // background-color: #881616;
-  // background-color: #f4f4f4;
   background-size: 70%, 3.5rem;
   &:hover {
     background-size: 72%, 3.5rem;

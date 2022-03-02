@@ -62,7 +62,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items:center;
-  min-height: 50vh;
+  // min-height: 70vh;
   padding: 1rem;
   
   h3{

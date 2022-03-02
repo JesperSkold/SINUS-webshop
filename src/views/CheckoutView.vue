@@ -50,27 +50,18 @@ export default {
 
 <style lang="scss" scoped>
 .checkout-view {
-	// display: flex;
-	// flex-direction: row;
-	// align-items: center;
-  // justify-content: space-between;
-  min-height: 50vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  // place-items: center;
 }
 
 .checkout-products{
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
-  // max-height: 60vh;
+  max-height: 70vh;
   max-width: 35vw;
-  overflow-y: scroll;
-  // padding: 2rem;
+  overflow-y: auto;
     h3{
-      margin: 1rem
+      text-align: center;
     }
 }
 

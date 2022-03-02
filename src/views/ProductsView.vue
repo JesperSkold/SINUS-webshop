@@ -1,20 +1,5 @@
 <template>
   <div class="products-view">
-<!-- 
-    <div class="products-view-top">
-      <div class="path"><p>products / {{route}}</p></div>
-      <div class="filter" @click="filterDisplay = true">        
-        <select 
-          class="filters-select"
-          v-model="activeSortType"
-        >
-          <option v-for="type in sortTypes" :key="type.name" :value="type.value">{{type.name}}</option>
-        </select>
-      </div>
-      <div class="line"></div>
-    </div> 
--->
-
     <div class="products-list">
       <Product v-for="product in products" :key="product.id" :product="product"/>
     </div>
@@ -37,16 +22,6 @@ export default {
       const category = this.$route.path.substring(1).split('/')[1]
       return this.$store.state.products.filter(item => category == item.category)
     },
-    // route(){
-    //   let routeFixed = this.$route.path.substring(1).split('/')[1]
-    //   if(routeFixed === 'tshirt'){
-    //     return 't-Shirts'
-    //   }
-    //   else if(routeFixed == 'socks'){
-    //     return 'socks'
-    //   }
-    //   return routeFixed + 's'
-    // },
     modalActive(){
       return this.$store.state.showCartModal
       }

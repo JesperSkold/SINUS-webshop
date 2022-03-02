@@ -155,8 +155,6 @@ export default {
   }},
   methods:{
     updateOrder(orderStatus, orderId){
-		console.log(orderStatus.target.value)
-		console.log(orderId)  
       this.$store.dispatch('patchOrder', {status: orderStatus.target.value, id: orderId})
     },
     getCategory(){
@@ -165,7 +163,6 @@ export default {
     },
     patchProduct(){
       this.$store.dispatch('patchProduct', this.selectedProduct)
-      console.log(this.selectedProduct)
       this.selectedCategory = this.selectedProduct.category
       this.selectedProduct = null
     },
@@ -222,6 +219,7 @@ export default {
 .admin-view {
   display: grid;
   grid-template-columns: 4fr 3fr;
+  min-height: 69vh;
 }
 
 h4 {

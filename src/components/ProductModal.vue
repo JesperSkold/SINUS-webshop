@@ -41,7 +41,6 @@ export default {
     },
     addToCart(product) {
       this.$store.dispatch("addToCart", product);
-      console.log(product);
     },
   },
   computed: {

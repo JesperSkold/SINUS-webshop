@@ -3,7 +3,6 @@ import axios from 'axios'
 axios.defaults.baseURL = "http://localhost:5000/api"
 
 export function saveToken(token) {
-  console.log(token);
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
@@ -147,7 +146,6 @@ export async function editOrder(id, status){
   export async function upload(ref){
     const formData = new FormData()
     formData.append("imgFile", ref)
-    console.log(ref);
     try{
       const response = await axios.post('/images', formData)
       return response

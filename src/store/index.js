@@ -95,7 +95,6 @@ export default new Vuex.Store({
       state.products = state.products.filter(foundProduct => foundProduct.id != product.id)
     },
     setActiveHomeProduct(state, product){
-      console.log(product)
       state.singleProduct = product
     }
   },
@@ -125,7 +124,6 @@ export default new Vuex.Store({
     async activeHomeProduct(context, id){
       const response = await API.fetchHomeProduct(id)
       if (response.status === 200) {
-        console.log(response);
         context.commit("setActiveHomeProduct", response.data.post)
       }else{
         console.log(response);
@@ -168,13 +166,10 @@ export default new Vuex.Store({
           cartIds.push(context.state.cart[i].id)
         }
       }
-      console.log(cartIds)
       const response = 
         await API.placeOrder(cartIds, credentials.address.city, credentials.address.street, credentials.address.zip)
         if(response.status === 200){
-          console.log('Order placed!')
           context.commit('clearCart')
-          console.log(response)
         } else {
           console.log(response)
         }
@@ -183,11 +178,9 @@ export default new Vuex.Store({
     async getAccountInfo(context){
       const response = await API.fetchAccountInfo()
       if (response.status === 200) {
-        console.log(response.data);
         context.commit('saveAccountInfo', response.data)
         if (response.data.role === 'admin') {
           context.commit('setAdmin')
-          console.log('IAM ADMIN');
         }
       }else{
         console.log(response.data.error);
@@ -196,17 +189,15 @@ export default new Vuex.Store({
     async getOrderHistory(context){
       const response = await API.fetchOrderHistory()
       if (response.status === 200) {
-        console.log(response.data, "<--- new");
         context.commit('saveOrderHistory', response.data)
       } else{
         console.log(response.data.error);
       }
     },
     async patchOrder(context, order){
-      console.log(order.status);
       const response = await API.editOrder(order.id, order.status)
       if (response.status === 200) {
-        console.log('WOW U EDITTED THE ORDER');
+        console.log('Order Patched');
       }else{
         console.log(response)
       }
@@ -222,7 +213,7 @@ export default new Vuex.Store({
         product.price
         )
       if (response.status === 200) {
-        console.log('nice patch bro ;)')
+        console.log('Product Patched')
         await context.dispatch('fetchAllProducts', product.category)
       } else {
         console.log(response)
@@ -232,7 +223,7 @@ export default new Vuex.Store({
       const response = await API.deleteProduct(product.id)
       if (response.status === 200) {
         context.commit('deleteFromCache', product)
-        console.log('nice delete bro ;)')
+        console.log('Product Deleted')
         await context.dispatch('fetchAllProducts', product.category)
       } else {
         console.log(response)
@@ -248,7 +239,7 @@ export default new Vuex.Store({
         product.price
       )
       if (response.status === 200) {
-        console.log('nice add bro ;)')
+        console.log('Product Added')
         context.commit('addProduct', response.data)
         await context.dispatch('fetchAllProducts', product.category)
       } else {
@@ -258,7 +249,7 @@ export default new Vuex.Store({
     async upload(context, ref){
       const response = await API.upload(ref)
       if (response.status === 200) {
-        console.log('nice upload bro ;)')
+        console.log('Upload Complete')
       } else {
         console.log(response)
       }

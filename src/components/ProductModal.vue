@@ -60,7 +60,8 @@ h4 {
 }
 .product-text {
   flex-direction: column;
-  min-width: 300px;
+  max-width: 300px;
+  margin-left: 4rem;
 }
 .product-info,
 .price-button {

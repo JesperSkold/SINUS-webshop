@@ -8,6 +8,7 @@
             alt="Shopping cart"
             @click="addToCart(product)"
           />
+          <!-- $TIPS: Move  http://localhost:5000 to an environment variable-->
         <img
           :src="'http://localhost:5000' + '/images/' + product.imgFile"
           class="product-image"

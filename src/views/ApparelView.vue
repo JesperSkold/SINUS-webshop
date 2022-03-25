@@ -77,6 +77,8 @@ h3 {
 
 .hoodies {
   grid-area: hoodies;
+  // $FEEDBACK: This will not work in any other environment than development
+  // If assets are used as part of the design, include them in the frontend
   background: 
     url('http://localhost:5000/images/sinus-hoodie-green.png') no-repeat,
     url('http://localhost:5000/images/sinus-hoodie-ash.png') no-repeat,

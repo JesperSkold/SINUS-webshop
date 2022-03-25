@@ -37,7 +37,7 @@ export default {
      this.$store.dispatch('showCartModal')
    },
   fetchAllProducts(){
-      const route = this.$route.path.substring(1).split('/')[1]
+      const route = this.$route.path.substring(1).split('/')[1] // $FEEDBACK: this.$route.params.category
       this.$store.dispatch('fetchAllProducts', route)
     }
   },
@@ -49,6 +49,7 @@ export default {
       return this.$store.state.cartAnimation
     }
   },
+  // I like it, it's spicy
   watch: {
     '$store.state.showCartModal': function () {
       if(this.$store.state.showCartModal){

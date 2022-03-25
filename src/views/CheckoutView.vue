@@ -37,7 +37,9 @@ export default {
 		products() {
 			return this.$store.state.cart;
 		},
+    // $FEEDBACK: Replace with a vuex getter
   cartEmpty(){
+    // return this.$store.state.cart.length !== 0
       if(this.$store.state.cart.length){
       return false 
       } else {

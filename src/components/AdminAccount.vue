@@ -186,9 +186,11 @@ export default {
     }
   },
 	computed: {
+    // $FEEDBACK: Replace with a getter
     products(){
       return this.$store.state.products.filter(product => product.category == this.selectedCategory)
     },
+    // $QUESTION: What is this magic?
 		uniqueOrder() {
 			let orders = [];
 			let orderInfo = null;

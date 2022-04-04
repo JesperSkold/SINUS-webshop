@@ -30,6 +30,7 @@ export default {
     const route = this.$route.path.substring(1).split('/')[1]
       this.$store.dispatch('fetchAllProducts', route)
   },
+  // $FEEDBACK: Using watchers should be avoided becuase of performance, a router guard is preferred here
   watch: {
     '$route.path': function () {
       const route = this.$route.path.substring(1).split('/')[1]

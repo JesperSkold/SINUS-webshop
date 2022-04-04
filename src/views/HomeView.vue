@@ -55,7 +55,7 @@ export default {
       this.$store.dispatch("showProductModal");
     },
     homeProduct(){
-      this.$store.dispatch("activeHomeProduct", 16)
+      this.$store.dispatch("activeHomeProduct", 16) // $QUESTION: Magic value 16?
     }
   },
 }

@@ -1,6 +1,6 @@
 <template>
   <button>
-    <slot/>
+    <slot/> <!-- It's brilliant -->
   </button>
 </template>
 

@@ -7,6 +7,7 @@
 					<h5>Your Cart</h5>
 					<img src="../assets/close.svg" alt="" @click="closeModal" />
 				</div>
+        <!-- <Product :modalView="true" /> är samma sak som </Product modalView> -->
 				<Product v-for="product in products" :key="product.id" :product="product" :modalView="true" class="cart-test" />
 				<section v-if="!cartEmpty" class="checkout">
 					<h5>

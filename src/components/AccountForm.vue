@@ -59,6 +59,7 @@ export default {
     accountInfo(){
       return this.$store.state.accountInfo
     },
+    // $FEEDBACK: Replace with getter
     total(){
       let cart = this.$store.state.cart
       let sum = 0
@@ -70,6 +71,7 @@ export default {
     errorMessage(){
      return this.$store.state.error
    },
+   // $FEEDBACK: Replace with getter
     cartEmpty(){
       if(this.$store.state.cart.length){
       return false 

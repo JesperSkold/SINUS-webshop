@@ -40,12 +40,12 @@ export default {
     }
   },
   onMounted(){
-
+    // An empty void haunts this life cycle hook
   },
   methods:{
     async loginAccount(){
      await this.$store.dispatch('auth', {email: this.email, password: this.password})
-     this.error = true
+     this.error = true // // $FEEDBACK: Looking at this code, an error always occurs
      
     }
   },

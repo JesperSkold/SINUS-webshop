@@ -17,7 +17,7 @@ export default new Vuex.Store({
     showCartModal: false,
     showProductModal: false,
     userLoggedIn: false,
-    error: "",
+    error: "", // What kind of error? State is application wide
     cartAnimation: false,
     adminLoggedIn: false,
   },
@@ -141,7 +141,7 @@ export default new Vuex.Store({
       if (response.status === 200) {
         await API.saveToken(response.data.token)
         context.commit('loggedIn')
-        VueRouter.push('/account')
+        VueRouter.push('/account') // $FEEDBACK: Bad practice, navigate from components instead
       }else{
         context.commit('error', response.data.error)
       }
@@ -203,6 +203,7 @@ export default new Vuex.Store({
       }
     },
     async patchProduct(context, product){
+      // $FEEDBACK: Use an object here instead of 7 arguments
       const response = await API.patchProduct(
         product.id,
         product.title,
